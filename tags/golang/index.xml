@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Golang on JeasonBlog</title>
+    <link>https://jeasonstudio.github.io/tags/golang/</link>
+    <description>Recent content in Golang on JeasonBlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 08 Feb 2017 22:08:25 +0800</lastBuildDate>
+    
+	<atom:link href="https://jeasonstudio.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Golang 图像处理上的一些实践</title>
+      <link>https://jeasonstudio.github.io/posts/golang-image-process/</link>
+      <pubDate>Wed, 08 Feb 2017 22:08:25 +0800</pubDate>
+      
+      <guid>https://jeasonstudio.github.io/posts/golang-image-process/</guid>
+      <description>&lt;p&gt;时至今日，openCV 已经出到了3.2版本，且其社区也足够庞大，其全面性已无需赘述。但我们用 Golang 这样一门待火不火的语言来造一些相关的轮子，也蛮有趣&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 
+			
+  
+    <meta name="twitter:card" content="summary"/>
+    
+      <meta name="twitter:image" content="https://jeasonstudio.github.io/images/avatar.png" />
+    
+  
+  
+  <meta name="twitter:title" content="函数式编程"/>
+  <meta name="twitter:description" content="Functional Programing
+
+"/>
+  
+    <meta name="twitter:site" content="@JeasonStudio"/>
+  
+  
+  
+  
+    <meta name="twitter:creator" content="@Jeason"/>
+  
+
+
+
+		
+		<meta name="author" content="Jeason">
+		<meta name="description" content="Jeason&#39;s person blog">
+		<meta name="generator" content="Hugo 0.33" />
+		<title>函数式编程 &middot; JeasonBlog</title>
+		<link rel="shortcut icon" href="https://jeasonstudio.github.io/images/favicon.ico">
+		<link rel="stylesheet" href="https://jeasonstudio.github.io/css/style.css">
+		<link rel="stylesheet" href="https://jeasonstudio.github.io/css/highlight.css">
+
+		
+		<link rel="stylesheet" href="https://jeasonstudio.github.io/css/font-awesome.min.css">
+		
+
+		
+		<link href="https://jeasonstudio.github.io/index.xml" rel="alternate" type="application/rss+xml" title="JeasonBlog" />
+		
+
+		
+		<link rel="stylesheet" href="https://jeasonstudio.github.io/./css/custom.css">
+		
+
+		
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({
+				tex2jax: {
+					inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+					processEscapes: true
+				}
+			});
+		</script>
+		<script src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+		
+		<script src="https://cdn.bootcss.com/raphael/2.2.7/raphael.min.js"></script>
+		<script src="https://cdn.bootcss.com/flowchart/1.8.0/flowchart.min.js"></script>
+
+		
+		<script src="https://cdn.bootcss.com/underscore.js/1.4.4/underscore-min.js"></script>
+		<script src="https://cdn.bootcss.com/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
+
+		
+		<script src="https://cdn.bootcss.com/viz.js/1.8.1-pre.4/viz-lite.js"></script>
+
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+		<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='https://jeasonstudio.github.io/'> <span class="arrow">←</span>Home</a>
+	
+	<a href='https://jeasonstudio.github.io/posts'>Archive</a>
+	<a href='https://jeasonstudio.github.io/tags'>Tags</a>
+	<a href='https://jeasonstudio.github.io/about'>About</a>
+
+	
+
+	
+	<a class="cta" href="https://jeasonstudio.github.io/index.xml">Subscribe</a>
+	
+</nav>
+
+
+        <section id="wrapper" class="post">
+            <article>
+                <header>
+                    <h1>
+                        函数式编程
+                    </h1>
+                    <h2 class="headline">
+                    May 8, 2017 22:30
+                    · 533 words
+                    · 2 minute read
+                      <span class="tags">
+                      
+                      
+                          
+                              <a href="https://jeasonstudio.github.io/tags/front-end">front-end</a>
+                          
+                              <a href="https://jeasonstudio.github.io/tags/%E5%8E%9F%E5%88%9B">原创</a>
+                          
+                      
+                      
+                      </span>
+                    </h2>
+                </header>
+                
+                  
+                
+                <section id="post-body">
+                    <p>Functional Programing</p>
+
+<p></p>
+
+<pre><code class="language-javascript">(function () {
+    'use strict'
+
+    /**
+     * compose 之前的输出为之后的输入，返回最后函数的返回值，用于拆解逻辑性强的复杂函数
+     * @param {Function} first 
+     * @param {Function} last 
+     */
+    const compose = (first, ...last) =&gt; (...initArgs) =&gt; last.reduce((composed, func) =&gt; func(composed), first(...initArgs))
+
+    let judgeLength = ({
+        passwd
+    }) =&gt; {
+        if (passwd) {
+            return {
+                passwd: passwd
+            }
+        } else {
+            throw new Error('Please input the right PASSWD!')
+        }
+    }
+
+    let hashPasswd = ({
+        passwd
+    }) =&gt; {
+        return ({
+            username: &quot;Jeason&quot;,
+            passwd: &quot;md5(&quot; + passwd + &quot;)&quot;
+        })
+    }
+
+    let checkUserInfo = ({
+        username,
+        passwd
+    }) =&gt; {
+        return {
+            u: username + &quot;-CheckedByJeason&quot;,
+            p: passwd
+        }
+    }
+
+    let loginAndRidect = ({
+        u,
+        p
+    }) =&gt; {
+        return {
+            url: &quot;http://github.com/jeasonstudio&quot;,
+            token: &quot;wqert123==&quot;
+        }
+    }
+
+    const enter = compose(judgeLength, hashPasswd, checkUserInfo, loginAndRidect)
+
+    console.log(enter({
+        passwd: &quot;JeasonStudio&quot;
+    }))
+    
+    
+    /*-------------------------------------------------------*/
+
+    /**
+     * 同样用于拆解逻辑多的复杂函数，逻辑之间无强关联
+     * 每个函数参数相同，最终返回所有函数返回值数组
+     * @param {Function} funcs 
+     */
+    const concat = (...funcs) =&gt; (...args) =&gt; funcs.reduce((returns, func) =&gt; [...returns, func(...args)], [])
+
+    let beforeUpload = (...args) =&gt; {
+        // console.log(&quot;This file is ok to upload.&quot;)
+        return {
+            text: &quot;This file is ok to upload.&quot;,
+            code: 1
+        }
+    }
+
+    let cacheToLocal = (...args) =&gt; {
+        // console.log(&quot;Success to cache.&quot;)
+        return {
+            text: &quot;Success to cache.&quot;,
+            code: 2
+        }
+    }
+
+    const handle = concat(beforeUpload, cacheToLocal)
+
+    console.log(...handle({
+        fileName: &quot;PickUpYourSoap.avi&quot;,
+        fileSize: 1024
+    }))
+
+    /*-------------------------------------------------------*/
+    
+    /**
+     * 根据传入参数选择执行的函数并返回该函数返回值
+     * 拆解包含大量 if else switch case 的复杂函数
+     * @param {any} map 
+     */
+    const switcher = map =&gt; (type, ...args) =&gt; {
+        return map[type] !== undefined ? map[type](...args) : undefined
+    }
+
+    let clearMemory = (...args) =&gt; {
+        console.log('clearMemory', ...args)
+        return '内存清除完毕'
+    }
+
+    let clearCache = (...args) =&gt; {
+        console.log('clearCache', ...args)
+        return '缓存清除完毕'
+    }
+
+    const clear = switcher({
+        memory: clearMemory,
+        cache: clearCache
+    })
+
+    console.log(clear('memory', 1, 2, 3))
+    
+    /*-------------------------------------------------------*/
+
+
+    /**
+     * 用于拆解包含很多校验函数的复杂函数
+     * 依次执行函数数组，直到有第一个返回值结束 or undefined
+     * @param {any} funs 
+     */
+    const some = (...funs) =&gt; (...args) =&gt; funs.reduce((last, fun) =&gt; last === undefined ? fun(...args) : last, undefined)
+
+    let validateNull = (obj) =&gt; {
+        if (!obj) {
+            return '年龄不能为空'
+        }
+    }
+
+    let validateNumber = (obj) =&gt; {
+        if (parseInt(obj, 10) !== obj) {
+            return '年龄必须为自然数'
+        }
+    }
+
+    let pass = () =&gt; {
+        return '验证通过'
+    }
+
+    const judgeYear = some(validateNull, validateNumber, pass)
+
+    console.log(judgeYear(18))
+})()
+</code></pre>
+                </section>
+            </article>
+
+            
+                <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fjeasonstudio.github.io%2fposts%2ffunctional-programing%2f - %e5%87%bd%e6%95%b0%e5%bc%8f%e7%bc%96%e7%a8%8b by @JeasonStudio"><span class="icon-twitter"> tweet</span></a>
+
+
+
+<div id="gitalk-container"></div>
+
+            
+
+            
+
+            
+
+            <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    <a class="symbol" href="https://www.github.com/jeasonstudio">
+        <i class="fa fa-github-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://www.twitter.com/JeasonStudio">
+        <i class="fa fa-twitter-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://www.github.com/jeasonstudio">
+        <i class="fa fa-zhihu-square"></i>
+    </a>
+    
+
+
+</div>
+
+    
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <p class="small">
+        <span id="busuanzi_container_site_pv">本站总访问量 <span id="busuanzi_value_site_pv"></span> 次</span>
+    </p>
+    <p class="small">
+    
+       &copy; Copyright 2018 <i class="fa fa-heart" aria-hidden="true"></i> Jeason
+    
+
+       - Powered by <a href="http://www.gohugo.io/">Hugo</a> Theme By <a href="https://github.com/nodejh/hugo-theme-cactus-plus">nodejh</a>
+    </p>
+</footer>
+
+        </section>
+
+        <script src="https://jeasonstudio.github.io/js/jquery-3.3.1.min.js"></script>
+<script src="https://jeasonstudio.github.io/js/main.js"></script>
+<script src="https://jeasonstudio.github.io/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script src="https://jeasonstudio.github.io/./js/diagram.js"></script>
+
+<script src="https://jeasonstudio.github.io/./js/gitalk.js"></script>
+
+
+
+
+
+
+    </body>
+</html>

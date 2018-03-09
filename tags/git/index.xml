@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on JeasonBlog</title>
+    <link>https://jeasonstudio.github.io/tags/git/</link>
+    <description>Recent content in Git on JeasonBlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 01 Jun 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://jeasonstudio.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>关于 Git Commit Message 和 git rebase</title>
+      <link>https://jeasonstudio.github.io/posts/git-commit-message-rebase/</link>
+      <pubDate>Thu, 01 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://jeasonstudio.github.io/posts/git-commit-message-rebase/</guid>
+      <description>&lt;p&gt;关于 WorkFlow 的一些浅薄见解 :)&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

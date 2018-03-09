@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 
+			
+  
+    <meta name="twitter:card" content="summary"/>
+    
+      <meta name="twitter:image" content="https://jeasonstudio.github.io/images/avatar.png" />
+    
+  
+  
+  <meta name="twitter:title" content="MacOS 上搭建基于 GitHub Page 和 Hexo 的博客"/>
+  <meta name="twitter:description" content="零投资并不是零投入，你需要有一颗爱鼓捣的心————By Jeason
+
+"/>
+  
+    <meta name="twitter:site" content="@JeasonStudio"/>
+  
+  
+  
+  
+    <meta name="twitter:creator" content="@Jeason"/>
+  
+
+
+
+		
+		<meta name="author" content="Jeason">
+		<meta name="description" content="Jeason&#39;s person blog">
+		<meta name="generator" content="Hugo 0.33" />
+		<title>MacOS 上搭建基于 GitHub Page 和 Hexo 的博客 &middot; JeasonBlog</title>
+		<link rel="shortcut icon" href="https://jeasonstudio.github.io/images/favicon.ico">
+		<link rel="stylesheet" href="https://jeasonstudio.github.io/css/style.css">
+		<link rel="stylesheet" href="https://jeasonstudio.github.io/css/highlight.css">
+
+		
+		<link rel="stylesheet" href="https://jeasonstudio.github.io/css/font-awesome.min.css">
+		
+
+		
+		<link href="https://jeasonstudio.github.io/index.xml" rel="alternate" type="application/rss+xml" title="JeasonBlog" />
+		
+
+		
+		<link rel="stylesheet" href="https://jeasonstudio.github.io/./css/custom.css">
+		
+
+		
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({
+				tex2jax: {
+					inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+					processEscapes: true
+				}
+			});
+		</script>
+		<script src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+		
+		<script src="https://cdn.bootcss.com/raphael/2.2.7/raphael.min.js"></script>
+		<script src="https://cdn.bootcss.com/flowchart/1.8.0/flowchart.min.js"></script>
+
+		
+		<script src="https://cdn.bootcss.com/underscore.js/1.4.4/underscore-min.js"></script>
+		<script src="https://cdn.bootcss.com/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
+
+		
+		<script src="https://cdn.bootcss.com/viz.js/1.8.1-pre.4/viz-lite.js"></script>
+
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+		<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='https://jeasonstudio.github.io/'> <span class="arrow">←</span>Home</a>
+	
+	<a href='https://jeasonstudio.github.io/posts'>Archive</a>
+	<a href='https://jeasonstudio.github.io/tags'>Tags</a>
+	<a href='https://jeasonstudio.github.io/about'>About</a>
+
+	
+
+	
+	<a class="cta" href="https://jeasonstudio.github.io/index.xml">Subscribe</a>
+	
+</nav>
+
+
+        <section id="wrapper" class="post">
+            <article>
+                <header>
+                    <h1>
+                        MacOS 上搭建基于 GitHub Page 和 Hexo 的博客
+                    </h1>
+                    <h2 class="headline">
+                    May 26, 2016 00:00
+                    · 3154 words
+                    · 7 minute read
+                      <span class="tags">
+                      
+                      
+                          
+                              <a href="https://jeasonstudio.github.io/tags/%E5%8E%9F%E5%88%9B">原创</a>
+                          
+                      
+                      
+                      </span>
+                    </h2>
+                </header>
+                
+                  
+                    <div id="toc">
+                      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#首先我来解释一下-一个多月没更博客-博主跑哪优秀去了">首先我来解释一下，一个多月没更博客，博主跑哪优秀去了。。。</a></li>
+<li><a href="#环境配置"><strong>环境配置</strong></a>
+<ul>
+<li><a href="#node-js">Node.js</a></li>
+<li><a href="#git">Git</a></li>
+</ul></li>
+<li><a href="#安装hexo"><strong>安装Hexo</strong></a>
+<ul>
+<li><a href="#初始化">初始化</a></li>
+</ul></li>
+<li><a href="#关联github"><strong>关联Github</strong></a>
+<ul>
+<li><a href="#添加ssh-key到github">添加ssh key到Github</a>
+<ul>
+<li><a href="#检查ssh-keys是否存在github">检查SSH keys是否存在Github</a></li>
+<li><a href="#生成新的ssh-key">生成新的ssh key</a></li>
+<li><a href="#将ssh-key添加到github中">将ssh key添加到Github中</a></li>
+</ul></li>
+<li><a href="#创建仓库">创建仓库</a></li>
+<li><a href="#发布文章">发布文章</a></li>
+</ul></li>
+<li><a href="#安装theme"><strong>安装theme</strong></a></li>
+<li><a href="#绑定个人域名"><strong>绑定个人域名</strong></a>
+<ul>
+<li><a href="#github端">Github端</a></li>
+<li><a href="#域名解析">域名解析</a></li>
+</ul></li>
+<li><a href="#后记"><strong>后记</strong></a></li>
+<li><a href="#参考链接"><strong>参考链接</strong></a></li>
+</ul></li>
+</ul>
+</nav>
+                    </div>
+                  
+                
+                <section id="post-body">
+                    <p>零投资并不是零投入，你需要有一颗爱鼓捣的心————By Jeason</p>
+
+<p></p>
+
+<h2 id="首先我来解释一下-一个多月没更博客-博主跑哪优秀去了">首先我来解释一下，一个多月没更博客，博主跑哪优秀去了。。。</h2>
+
+<ul>
+<li>第一就是这个月事太多，各种虎头蛇尾的项目，以及我十分看好的钢镚儿。可能你觉得，这些是借口。</li>
+<li>第二，这种静态博客发博文不像WordPress等等成熟的框架那样简单，这没有现成的编辑器，也没有即视化的操作，而且最关键的是，，换了台常用电脑后我就有点方。联想就像封建时代的第一胎丫头一样，有了小子就忘了他姐。</li>
+<li>第三，惭愧惭愧，一直想把它移植到我现在常用的Mac上，但一直没配置成功（嘘。。。不要张扬）。</li>
+</ul>
+
+<p>总之，拖了这么久，一个月零十二天，抱歉抱歉。（这话可能是说给自己听的）</p>
+
+<p>这是一篇详细文章来讲述用Mac搭建Hexo博客于Github上的完整历程， 也是踩了无数的坑搭起来的,这篇文章很大部分内容由“<a href="gonghonglou.com">与佳期</a>”完成，征得原文作者同意后发布。</p>
+
+<p>如果你曾经或一直是一个 <code>“域名+服务器+WordPress”</code> 的使用者，那么。我建议你不放看完全文。
+如果你也想像我一样零投资搭建一个好看的博客，那你没啥说的，看完它。</p>
+
+<h2 id="环境配置"><strong>环境配置</strong></h2>
+
+<p><a href="https://hexo.io/docs">Hexo官网</a>上本就有对Hexo安装及使用的详细介绍，墙裂推荐。这里来讲述自己安装的亲身步骤，或有区别。</p>
+
+<h3 id="node-js">Node.js</h3>
+
+<p>用来生成静态页面。移步<a href="https://nodejs.org/en/">Node.js官网</a>，下载v5.5.0 Stable 一路安装即可。</p>
+
+<h3 id="git">Git</h3>
+
+<p>用来将本地Hexo内容提交到Github上。Xcode自带Git，这里不再赘述。如果没有Xcode可以参考<a href="https://hexo.io/docs">Hexo官网</a>上的安装方法。</p>
+
+<h2 id="安装hexo"><strong>安装Hexo</strong></h2>
+
+<p>当Node.js和Git都安装好后就可以正式安装Hexo了，终端执行如下命令：</p>
+
+<pre><code>$ sudo npm install -g hexo
+</code></pre>
+
+<p>输入管理员密码（Mac登录密码）即开始安装 (<code>sudo</code>:linux系统管理指令  <code>-g</code>:全局安装)</p>
+
+<blockquote>
+<p>注意坑一：<a href="https://hexo.io/docs">Hexo官网</a>上的安装命令是<code>$ npm install -g hexo-cli</code>，安装时不要忘记前面加上<code>sudo</code>，否则会因为权限问题报错。</p>
+</blockquote>
+
+<h3 id="初始化">初始化</h3>
+
+<p>终端cd到一个你选定的目录，执行<code>hexo init</code>命令：</p>
+
+<pre><code>	$ hexo init blog
+</code></pre>
+
+<p><code>blog</code>是你建立的文件夹名称。cd到<code>blog</code>文件夹下，执行如下命令，安装npm：</p>
+
+<pre><code>	$ npm install
+</code></pre>
+
+<p>执行如下命令，开启hexo服务器：</p>
+
+<pre><code>	$ hexo s
+</code></pre>
+
+<p>此时，浏览器中打开网址<a href="http://0.0.0.0:4000">http://localhost:4000</a>，能看到如下页面：
+<img src="https://user-images.githubusercontent.com/17971291/31884453-aa25ce54-b7b2-11e7-9f75-6f52d75ac89d.png" alt="image" /></p>
+
+<p>本地设置好后，接下来开始关联Github。</p>
+
+<h2 id="关联github"><strong>关联Github</strong></h2>
+
+<h3 id="添加ssh-key到github">添加ssh key到Github</h3>
+
+<h4 id="检查ssh-keys是否存在github">检查SSH keys是否存在Github</h4>
+
+<p>执行如下命令，检查SSH keys是否存在。如果有文件<code>id_rsa.pub</code>或<code>id_dsa.pub</code>，则直接进入步骤1.3将SSH key添加到Github中，否则进入下一步生成SSH key。</p>
+
+<pre><code>	$ ls -al ~/.ssh
+</code></pre>
+
+<h4 id="生成新的ssh-key">生成新的ssh key</h4>
+
+<p>执行如下命令生成public/private rsa key pair，注意将<code>your_email@example.com</code>换成你自己注册Github的邮箱地址。</p>
+
+<pre><code>	$ ssh-keygen -t rsa -C &quot;your_email@example.com&quot;
+</code></pre>
+
+<p>默认会在相应路径下（<code>~/.ssh/id_rsa.pub</code>）生成<code>id_rsa</code>和<code>id_rsa.pub</code>两个文件。</p>
+
+<h4 id="将ssh-key添加到github中">将ssh key添加到Github中</h4>
+
+<p>Find前往文件夹<code>~/.ssh/id_rsa.pub</code>打开id_rsa.pub文件，里面的信息即为SSH key，将这些信息复制到Github的Add SSH key页面即可。</p>
+
+<p>进入Github &ndash;&gt; Settings &ndash;&gt; SSH keys &ndash;&gt; add SSH key:</p>
+
+<p>Title里任意添一个标题，将复制的内容粘贴到Key里，点击下方<code>Add key</code>绿色按钮即可。</p>
+
+<h3 id="创建仓库">创建仓库</h3>
+
+<p>登录你的Github帐号，新建仓库，名为<code>用户名.github.io</code>固定写法，如<code>jeasonstudio.github.io</code>,如下图所示：
+<img src="https://user-images.githubusercontent.com/17971291/31884475-bb04c662-b7b2-11e7-8545-9726c398eb2d.png" alt="image" /></p>
+
+<p>本地的<code>blog</code>文件夹下内容为：</p>
+
+<pre><code>	_config.yml	
+	db.json 
+	node_modules 
+	package.json
+	scaffolds
+	source
+	themes
+</code></pre>
+
+<p>终端cd到<code>blog</code>文件夹下，<code>vim</code>打开<code>_config.yml</code>，命令如下：</p>
+
+<pre><code>	$ vim _config.yml
+</code></pre>
+
+<p>打开后往下滑到最后，修改成下边的样子：</p>
+
+<pre><code>deploy:
+  type: git
+  repository: https://github.com/jeasonstudio/jeasonstudio.github.io.git
+  branch: master
+</code></pre>
+
+<p>你需要将<code>repository</code>后<code>jeasonstudio</code>换成你自己的用户名，地址在上图<code>2</code>位置获取。hexo 3.1.1版本后<code>type:</code>值为<code>git</code>。</p>
+
+<blockquote>
+<p>注意坑二：在配置所有的<code>_config.yml</code>文件时（包括theme中的），在所有的冒号<code>:</code>后边都要加一个空格，否则执行hexo命令会报错，切记 切记</p>
+</blockquote>
+
+<p>在<code>blog</code>文件夹目录下执行生成静态页面命令：</p>
+
+<pre><code>	$ hexo generate		或者：hexo g  
+</code></pre>
+
+<p>此时若出现如下报错：</p>
+
+<pre><code>ERROR Local hexo not found in ~/blog
+ERROR Try runing: 'npm install hexo --save'
+</code></pre>
+
+<p>则执行命令：</p>
+
+<pre><code>npm install hexo --save
+</code></pre>
+
+<p>若无报错，自行忽略此步骤。</p>
+
+<p>再执行配置命令：</p>
+
+<pre><code>	$ hexo deploy			或者：hexo d
+</code></pre>
+
+<blockquote>
+<p>注意坑三：若执行命令<code>hexo deploy</code>仍然报错：无法连接git，则执行如下命令来安装<a href="https://github.com/hexojs/hexo-deployer-git">hexo-deployer-git</a>：</p>
+
+<pre><code>  $ npm install hexo-developer-git --save
+</code></pre>
+</blockquote>
+
+<p>再次执行<code>hexo generate</code>和<code>hexo deploy</code>命令</p>
+
+<p>此时，浏览器中打开网址<a href="http://jeasonstudio.github.io">http://jeasonstudio.github.io</a>（将<code>jeasonstudio</code>换成你的用户名）能看到和打开<code>http://localhost:4000</code>时一样的页面。</p>
+
+<h3 id="发布文章">发布文章</h3>
+
+<p>终端cd到<code>blog</code>文件夹下，执行如下命令新建文章：</p>
+
+<pre><code>	hexo new &quot;postName&quot;	
+</code></pre>
+
+<p>名为<code>postName.md</code>的文件会建在目录<code>/blog/source/_posts</code>下。你当然可以用vim来编辑文章。
+&gt;在此说明一下，我一直都在用微软的 VSCode编辑器来编写MarkDown，如果你有什么更好的建议，我会非常感激的。
+另外MarkDown格式的语法教程，前面的博文里有，但我知道你懒，<a href="http://jeasonstudio.github.io/2016/04/06/Markdown-%E8%AF%AD%E6%B3%95%E7%AE%80%E4%BB%8B/">传送门</a>。</p>
+
+<p>文章编辑完成后，终端cd到<code>blog</code>文件夹下，执行如下命令来发布：</p>
+
+<pre><code>	hexo generate 			//生成静态页面
+    hexo deploy			//将文章部署到Github&lt;/pre&gt;
+</code></pre>
+
+<hr />
+
+<p><strong>至此，Mac上搭建基于Github的Hexo博客就完成了。下面的内容是介绍安装theme，添加评论功能和绑定个人域名，如果有兴趣且还有耐心的话，请继续吧。</strong></p>
+
+<h2 id="安装theme"><strong>安装theme</strong></h2>
+
+<p>你可以到<a href="https://hexo.io/themes/">Hexo官网主题页</a>去搜寻自己喜欢的theme。这里以<a href="https://github.com/iissnan/hexo-theme-next">hexo-theme-next</a>为例</p>
+
+<p>终端cd到 <code>blog</code> 目录下执行如下命令：</p>
+
+<pre><code>	$ git clone https://github.com/iissnan/hexo-theme-next themes/next
+</code></pre>
+
+<p>将<code>blog</code>目录下<code>_config.yml</code>里<code>theme</code>的名称<code>landscape</code>修改为<code>next</code></p>
+
+<p>终端cd到<code>blog</code>目录下执行如下命令(每次部署文章的步骤)：</p>
+
+<pre><code>	$ hexo clean		   //清除缓存文件 (db.json) 和已生成的静态文件 (public)
+
+    $ hexo g			 //生成缓存和静态文件
+
+    $ hexo d			 //重新部署到服务器
+</code></pre>
+
+<p>至于更改theme内容，比如名称，描述，头像等去修改<code>blog/_config.yml</code>文件和<code>blog/themes/next/_config.yml</code>文件中对应的属性名称即可， 不要忘记冒号<code>:</code>后加空格。  <a href="http://theme-next.iissnan.com/"> NexT 使用文档</a>里有极详细的介绍。</p>
+
+<h2 id="绑定个人域名"><strong>绑定个人域名</strong></h2>
+
+<p>现在使用的域名是Github提供的二级域名，也可以绑定为自己的个性域名。购买域名，可以到<a href="https://sg.godaddy.com/zh/">GoDaddy官网</a>，网友亲切称呼为：狗爹，也可以到<a href="http://wanwang.aliyun.com/">阿里万网</a>购买。</p>
+
+<h3 id="github端">Github端</h3>
+
+<p>在<code>/blog/themes/landscape/source</code>目录下新建文件名为：<code>CNAME</code>文件，注意没有后缀名！直接将自己的域名如：<code>jeasonstudio.com</code>写入。</p>
+
+<p>终端cd到<code>blog</code>目录下执行如下命令重新部署：</p>
+
+<pre><code>	$ hexo clean
+    $ hexo g
+    $ hexo d
+</code></pre>
+
+<blockquote>
+<p>注意坑四：网上许多都是说在Github上直接新建<code>CNAME</code>文件，如果这样的话，在你下一次执行<code>hexo d</code>部署命令后<code>CNAME</code>文件就消失了，因为本地没有此文件嘛。</p>
+</blockquote>
+
+<h3 id="域名解析">域名解析</h3>
+
+<p>如果将域名指向一个域名，实现与被指向域名相同的访问效果，需要增加CNAME记录。</p>
+
+<p>登录你注册域名的网站，比如万网，在你购买的域名后边点击：解析 &ndash;&gt; 添加解析</p>
+
+<p>记录类型：CNAME</p>
+
+<p>主机记录：将域名解析为example.com（不带www），填写@或者不填写</p>
+
+<p>记录值：jeasonstudio.github.io. (不要忘记最后的<code>.</code>，<code>jeasonstudio</code>改为你自己的用户名)，点击保存即可。</p>
+
+<p>此时，大功告成！</p>
+
+<h2 id="后记"><strong>后记</strong></h2>
+
+<p>参考<a href="http://jeasonstudio.github.io">Hexo博客：Jeasonstudio</a>，希望对大家有所帮助，欢迎吐槽～</p>
+
+<h2 id="参考链接"><strong>参考链接</strong></h2>
+
+<ul>
+<li><a href="https://hexo.io/docs">Hexo官网</a></li>
+<li><a href="http://leopardpan.github.io/2015/08/12/hexo/">HEXO</a></li>
+<li><a href="http://www.jianshu.com/p/31cbbbc5f9fa/">如何生成SSH key</a></li>
+</ul>
+
+<blockquote>
+<p>看到最后的都是真爱。
+<!-- Content End  --></p>
+</blockquote>
+                </section>
+            </article>
+
+            
+                <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fjeasonstudio.github.io%2fposts%2fmac-github-page-hexo%2f - MacOS%20%e4%b8%8a%e6%90%ad%e5%bb%ba%e5%9f%ba%e4%ba%8e%20GitHub%20Page%20%e5%92%8c%20Hexo%20%e7%9a%84%e5%8d%9a%e5%ae%a2 by @JeasonStudio"><span class="icon-twitter"> tweet</span></a>
+
+
+
+<div id="gitalk-container"></div>
+
+            
+
+            
+
+            
+
+            <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    <a class="symbol" href="https://www.github.com/jeasonstudio">
+        <i class="fa fa-github-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://www.twitter.com/JeasonStudio">
+        <i class="fa fa-twitter-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://www.github.com/jeasonstudio">
+        <i class="fa fa-zhihu-square"></i>
+    </a>
+    
+
+
+</div>
+
+    
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <p class="small">
+        <span id="busuanzi_container_site_pv">本站总访问量 <span id="busuanzi_value_site_pv"></span> 次</span>
+    </p>
+    <p class="small">
+    
+       &copy; Copyright 2018 <i class="fa fa-heart" aria-hidden="true"></i> Jeason
+    
+
+       - Powered by <a href="http://www.gohugo.io/">Hugo</a> Theme By <a href="https://github.com/nodejh/hugo-theme-cactus-plus">nodejh</a>
+    </p>
+</footer>
+
+        </section>
+
+        <script src="https://jeasonstudio.github.io/js/jquery-3.3.1.min.js"></script>
+<script src="https://jeasonstudio.github.io/js/main.js"></script>
+<script src="https://jeasonstudio.github.io/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script src="https://jeasonstudio.github.io/./js/diagram.js"></script>
+
+<script src="https://jeasonstudio.github.io/./js/gitalk.js"></script>
+
+
+
+
+
+
+    </body>
+</html>

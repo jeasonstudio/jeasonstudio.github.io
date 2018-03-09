@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 
+			
+  
+    <meta name="twitter:card" content="summary"/>
+    
+      <meta name="twitter:image" content="https://jeasonstudio.github.io/images/avatar.png" />
+    
+  
+  
+  <meta name="twitter:title" content="Ripples.wxss——微信小程序 css 库"/>
+  <meta name="twitter:description" content="1月9日，微信正式发布微信小程序，作为开发人员，除了关注技术方面的一些创新与壁垒，也要多用多看，分析这些小程序的优点与不足，有时候作为一个 web 前端，也十分需要 UI/UX 方面敏锐的嗅觉。
+
+"/>
+  
+    <meta name="twitter:site" content="@JeasonStudio"/>
+  
+  
+  
+  
+    <meta name="twitter:creator" content="@Jeason"/>
+  
+
+
+
+		
+		<meta name="author" content="Jeason">
+		<meta name="description" content="Jeason&#39;s person blog">
+		<meta name="generator" content="Hugo 0.33" />
+		<title>Ripples.wxss——微信小程序 css 库 &middot; JeasonBlog</title>
+		<link rel="shortcut icon" href="https://jeasonstudio.github.io/images/favicon.ico">
+		<link rel="stylesheet" href="https://jeasonstudio.github.io/css/style.css">
+		<link rel="stylesheet" href="https://jeasonstudio.github.io/css/highlight.css">
+
+		
+		<link rel="stylesheet" href="https://jeasonstudio.github.io/css/font-awesome.min.css">
+		
+
+		
+		<link href="https://jeasonstudio.github.io/index.xml" rel="alternate" type="application/rss+xml" title="JeasonBlog" />
+		
+
+		
+		<link rel="stylesheet" href="https://jeasonstudio.github.io/./css/custom.css">
+		
+
+		
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({
+				tex2jax: {
+					inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+					processEscapes: true
+				}
+			});
+		</script>
+		<script src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+		
+		<script src="https://cdn.bootcss.com/raphael/2.2.7/raphael.min.js"></script>
+		<script src="https://cdn.bootcss.com/flowchart/1.8.0/flowchart.min.js"></script>
+
+		
+		<script src="https://cdn.bootcss.com/underscore.js/1.4.4/underscore-min.js"></script>
+		<script src="https://cdn.bootcss.com/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
+
+		
+		<script src="https://cdn.bootcss.com/viz.js/1.8.1-pre.4/viz-lite.js"></script>
+
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+		<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='https://jeasonstudio.github.io/'> <span class="arrow">←</span>Home</a>
+	
+	<a href='https://jeasonstudio.github.io/posts'>Archive</a>
+	<a href='https://jeasonstudio.github.io/tags'>Tags</a>
+	<a href='https://jeasonstudio.github.io/about'>About</a>
+
+	
+
+	
+	<a class="cta" href="https://jeasonstudio.github.io/index.xml">Subscribe</a>
+	
+</nav>
+
+
+        <section id="wrapper" class="post">
+            <article>
+                <header>
+                    <h1>
+                        Ripples.wxss——微信小程序 css 库
+                    </h1>
+                    <h2 class="headline">
+                    Apr 8, 2016 22:05
+                    · 976 words
+                    · 2 minute read
+                      <span class="tags">
+                      
+                      
+                          
+                              <a href="https://jeasonstudio.github.io/tags/%E5%8E%9F%E5%88%9B">原创</a>
+                          
+                      
+                      
+                      </span>
+                    </h2>
+                </header>
+                
+                  
+                    <div id="toc">
+                      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#安装">安装</a></li>
+<li><a href="#使用">使用</a></li>
+<li><a href="#使用实例">使用实例</a></li>
+<li><a href="#个性化引入">个性化引入</a></li>
+<li><a href="#最后">最后</a></li>
+</ul></li>
+</ul>
+</nav>
+                    </div>
+                  
+                
+                <section id="post-body">
+                    <p>1月9日，微信正式发布微信小程序，作为开发人员，除了关注技术方面的一些创新与壁垒，也要多用多看，分析这些小程序的优点与不足，有时候作为一个 web 前端，也十分需要 UI/UX 方面敏锐的嗅觉。</p>
+
+<p></p>
+
+<p>今天我们来说说小程序的 UX (或者说：微交互)。团队的技术水平决定产品的下限，对微交互的极致追求决定了产品的上限。</p>
+
+<p>举个简单的例子：我们在使用 wx,showModal(obj) 、并且交互层级分明的情况下，可以给底层加一个 「高斯模糊」，例如：</p>
+
+<pre><code class="language-html">&lt;view class=&quot;page {{isBlur ? 'blur':''}}&quot;&gt;
+</code></pre>
+
+<pre><code class="language-css">.blur {filter: blur(6rpx);}
+</code></pre>
+
+<p>有时候几行简单的代码就能给一款产品带来高一个层次的体验。</p>
+
+<p>下面说我们今天的重头戏，为微信小程序定制的 css3 动效库 <a href="http://link.zhihu.com/?target=https%3A//github.com/jeasonstudio/Ripples.wxss.git">Ripples.wxss**</a></p>
+
+<p>GitHub 地址：<a href="http://link.zhihu.com/?target=https%3A//github.com/jeasonstudio/Ripples.wxss.git">jeasonstudio/Ripples.wxss**</a></p>
+
+<p>希望大家不要吝惜自己的 star~ 。</p>
+
+<blockquote>
+<p>声明：其中大部分动效来自 <a href="http://link.zhihu.com/?target=https%3A//github.com/daneden/animate.css.git">Animate.css**</a></p>
+</blockquote>
+
+<h2 id="安装">安装</h2>
+
+<ul>
+<li>如果你的微信小程序项目基于 nodejs 开发，你可以使用 npm 安装，并拷贝到相关目录后 @import &ldquo;path/ripples.min.wxss&rdquo;</li>
+</ul>
+
+<pre><code>npm install ripples.wxss --save
+
+</code></pre>
+
+<ul>
+<li>或直接 clone \ download 仓库 <a href="http://link.zhihu.com/?target=https%3A//github.com/jeasonstudio/Ripples.wxss.git">https://github.com/jeasonstudio/Ripples.wxss.git**</a>，拷贝 ripples.wxss 或 ripples.min.wxss到相关目录后 @import &ldquo;path/ripples.min.wxss&rdquo;。</li>
+</ul>
+
+<h2 id="使用">使用</h2>
+
+<ul>
+<li>首先在你想引入 「Ripples.wxss」 动效的 「element」 上加 「ripple」 class。</li>
+<li>如果你想让他循环不断播放，请添加 「infinite」 class。</li>
+</ul>
+
+<pre><code class="language-html">&lt;view class=&quot;ripple infinite bounce&quot;&gt;element&lt;/view&gt;
+</code></pre>
+
+<ul>
+<li>接下来你需要再添加如下你需要的 class (例如上面例子中的 「bounce」)、相应 class 列表可参考 <a href="http://link.zhihu.com/?target=https%3A//github.com/jeasonstudio/Ripples.wxss">这里**</a>，或者 <a href="http://link.zhihu.com/?target=http%3A//daneden.github.io/animate.css">Animate.css**</a></li>
+</ul>
+
+<h2 id="使用实例">使用实例</h2>
+
+<ul>
+<li>你可以查看根目录下的 DEMO 项目，为所有 Ripples.wxss 的综合展示，如图：</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/17971291/31923067-4ff04ce8-b83e-11e7-8e03-a38b163f1217.png" alt="image" /></p>
+
+<ul>
+<li>也可以参考如下的例子：</li>
+</ul>
+
+<pre><code class="language-js">//imdex.js
+Page({
+  data: {
+      bounceShow: false
+  },
+  showBounce: function () {
+      let that = this
+      that.setData({
+          bounceShow: true
+      })
+      setTimeout(function() {
+          that.setData({
+              bounceShow: false
+          }, 2000)
+      })
+}}
+
+</code></pre>
+
+<pre><code class="language-js">/* imdex.wxss */
+@import &quot;ripples.wxss&quot;;
+</code></pre>
+
+<pre><code class="language-html">&lt;!--index.wxml--&gt;
+&lt;view class=&quot;ripple {{bounceShow ? bounce:''}}&quot;&gt;bounce&lt;/view&gt;
+
+</code></pre>
+
+<ul>
+<li>不同场景下的使用逻辑还请自行斟酌</li>
+</ul>
+
+<h2 id="个性化引入">个性化引入</h2>
+
+<p>Ripple.wxss 使用 <a href="http://link.zhihu.com/?target=http%3A//gulpjs.com/">gulp**</a> 进行 wxss 的格式化和压缩，所以你也可以用它来个性化生成 「Ripples.min.wxss」 后引入，以避免代码冗余。</p>
+
+<p>如下：</p>
+
+<ul>
+<li>你需要安装 「gulp」 和其他依赖。</li>
+</ul>
+
+<p>-</p>
+
+<pre><code class="language-bash">  $ cd path/to/Ripples.wxss/
+  $ sudo npm install
+</code></pre>
+
+<ul>
+<li>你可以执行 「gulp」 命令，来生成 「ripples.wxss」和 「ripples.min.wxss」 文件，具体包含哪些请参见并修改根目录下的 「ripples-config.json」 文件。</li>
+</ul>
+
+<pre><code class="language-js">&quot;bouncing_entrances&quot;: [
+    &quot;bounceIn&quot;,
+    &quot;bounceInDown&quot;,
+    &quot;bounceInLeft&quot;,
+    &quot;bounceInRight&quot;,
+    &quot;bounceInUp&quot;
+  ]
+
+</code></pre>
+
+<h2 id="最后">最后</h2>
+
+<p>文章如有不当，请各位批评指正。</p>
+
+<p>欢迎大家关注我的专栏：<a href="https://zhuanlan.zhihu.com/Jeason">知乎专栏-代码小白的日常</a></p>
+
+<p>照旧放上 GIthub 地址：<a href="http://link.zhihu.com/?target=https%3A//github.com/jeasonstudio/Ripples.wxss">jeasonstudio/Ripples.wxss**</a></p>
+                </section>
+            </article>
+
+            
+                <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fjeasonstudio.github.io%2fposts%2fripple-wxss%2f - Ripples.wxss%e2%80%94%e2%80%94%e5%be%ae%e4%bf%a1%e5%b0%8f%e7%a8%8b%e5%ba%8f%20css%20%e5%ba%93 by @JeasonStudio"><span class="icon-twitter"> tweet</span></a>
+
+
+
+<div id="gitalk-container"></div>
+
+            
+
+            
+
+            
+
+            <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    <a class="symbol" href="https://www.github.com/jeasonstudio">
+        <i class="fa fa-github-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://www.twitter.com/JeasonStudio">
+        <i class="fa fa-twitter-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://www.github.com/jeasonstudio">
+        <i class="fa fa-zhihu-square"></i>
+    </a>
+    
+
+
+</div>
+
+    
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <p class="small">
+        <span id="busuanzi_container_site_pv">本站总访问量 <span id="busuanzi_value_site_pv"></span> 次</span>
+    </p>
+    <p class="small">
+    
+       &copy; Copyright 2018 <i class="fa fa-heart" aria-hidden="true"></i> Jeason
+    
+
+       - Powered by <a href="http://www.gohugo.io/">Hugo</a> Theme By <a href="https://github.com/nodejh/hugo-theme-cactus-plus">nodejh</a>
+    </p>
+</footer>
+
+        </section>
+
+        <script src="https://jeasonstudio.github.io/js/jquery-3.3.1.min.js"></script>
+<script src="https://jeasonstudio.github.io/js/main.js"></script>
+<script src="https://jeasonstudio.github.io/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script src="https://jeasonstudio.github.io/./js/diagram.js"></script>
+
+<script src="https://jeasonstudio.github.io/./js/gitalk.js"></script>
+
+
+
+
+
+
+    </body>
+</html>
