@@ -25,11 +25,11 @@ tags: [
 
 有时候几行简单的代码就能给一款产品带来高一个层次的体验。
 
-下面说我们今天的重头戏，为微信小程序定制的 css3 动效库 [Ripples.wxss**](http://link.zhihu.com/?target=https%3A//github.com/jeasonstudio/Ripples.wxss.git)
+下面说我们今天的重头戏，为微信小程序定制的 css3 动效库 [Ripples.wxss](http://link.zhihu.com/?target=https%3A//github.com/jeasonstudio/Ripples.wxss.git)
 
-GitHub 地址：[jeasonstudio/Ripples.wxss**](http://link.zhihu.com/?target=https%3A//github.com/jeasonstudio/Ripples.wxss.git)
+GitHub 地址：[jeasonstudio/Ripples.wxss](http://link.zhihu.com/?target=https%3A//github.com/jeasonstudio/Ripples.wxss.git)
 
-希望大家不要吝惜自己的 star~ 。
+希望大家不要吝惜自己的 star
 
 > 声明：其中大部分动效来自 [Animate.css**](http://link.zhihu.com/?target=https%3A//github.com/daneden/animate.css.git)
 
@@ -57,10 +57,7 @@ npm install ripples.wxss --save
 
 ## 使用实例
 
-- 你可以查看根目录下的 DEMO 项目，为所有 Ripples.wxss 的综合展示，如图：
-
-![image](https://user-images.githubusercontent.com/17971291/31923067-4ff04ce8-b83e-11e7-8e03-a38b163f1217.png)
-
+- 你可以查看根目录下的 DEMO 项目，为所有 Ripples.wxss 的综合展示
 - 也可以参考如下的例子：
 
 ```js
@@ -80,7 +77,6 @@ Page({
           }, 2000)
       })
 }}
-
 ```
 
 ```js
@@ -98,13 +94,12 @@ Page({
 
 ## 个性化引入
 
-Ripple.wxss 使用 [gulp**](http://link.zhihu.com/?target=http%3A//gulpjs.com/) 进行 wxss 的格式化和压缩，所以你也可以用它来个性化生成 「Ripples.min.wxss」 后引入，以避免代码冗余。
+Ripple.wxss 使用 [gulp](http://link.zhihu.com/?target=http%3A//gulpjs.com/) 进行 wxss 的格式化和压缩，所以你也可以用它来个性化生成 「Ripples.min.wxss」 后引入，以避免代码冗余。
 
 如下：
 
 - 你需要安装 「gulp」 和其他依赖。
 
--
 ```bash
   $ cd path/to/Ripples.wxss/
   $ sudo npm install

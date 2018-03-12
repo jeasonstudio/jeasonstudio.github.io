@@ -11,11 +11,11 @@ tags: [
 
 <!--more-->
 
-我的Github:  https://github.com/jeasonstudio
+我的Github:  [https://github.com/jeasonstudio](https://github.com/jeasonstudio)
 
-获取我们应该找个法子把它记录下来。
+或许我们应该找个法子把它记录下来。
 
-于是我写了一个十几行的 shell 脚本，每当我打开终端的时候，它就像整点的闹钟如约而至。文章最后，我会分享几个我在 macOS 上踩到的坑。先看 DEMO：
+于是我写了一个十几行的 `shell` 脚本，每当我打开终端的时候，它就像整点的闹钟如约而至。文章最后，我会分享几个我在 macOS 上踩到的坑。先看 DEMO：
 
 ![image](https://user-images.githubusercontent.com/17971291/31884920-651bfb2e-b7b4-11e7-9dd6-7314f17f2db3.png)
 
@@ -29,7 +29,7 @@ tags: [
 
 这就是最终效果，积累到一定程度的时候就可以做一些数据分析了。接着看一下源码：
 
-```
+``` bash
 #! /bin/bash
 
 cd ~/Documents/awesome-Jeason

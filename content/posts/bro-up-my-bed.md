@@ -2,6 +2,7 @@
 title: "睡在我上铺的兄弟"
 date: 2016-04-01
 draft: false
+hidden: true
 tags: [
   "影评"
 ]

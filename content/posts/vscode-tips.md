@@ -7,28 +7,29 @@ tags: [
 ]
 ---
 
-这里提一句，，下面的中文文档是我早期建的一个仓库，希望大家一起来为 VSCode 的中文社区的发展做出贡献，欢迎 fork & star
+这里提一句，下面的中文文档是我早期建的一个仓库，希望大家一起来为 `VSCode` 的中文社区的发展做出贡献，欢迎 `fork & star`  
+最近我打算写一篇 `vscode 技巧进阶` 的文章, 将我这些年使用 vscode 的经验沉淀下来(201803)
 
 <!--more-->
 
-**相关文档**
+## 相关文档
 
-- 官方文档（英文版）：[Documentation for Visual Studio Code**](http://link.zhihu.com/?target=https%3A//code.visualstudio.com/docs)
+- 官方文档（英文版）：[Documentation for Visual Studio Code](http://link.zhihu.com/?target=https%3A//code.visualstudio.com/docs)
 - 中文文档（未完成）：[GitHub - jeasonstudio/CN-VScode-Docs: VScode说明文档翻译](http://link.zhihu.com/?target=https%3A//github.com/jeasonstudio/CN-VScode-Docs)
 
-**下载**
+## 下载
 
 [Download Visual Studio Code](http://link.zhihu.com/?target=https%3A//code.visualstudio.com/Download)
 
-**简介**
+## 简介
 
 VSCode是微软推出的一款轻量编辑器，采取了和VS相同的UI界面，搭配合适的插件可以优化前端开发的体验。
 
-布局：左侧是用于展示所要编辑的所有文件和文件夹的文件管理器，依次是`**资源管理器**`，`搜索`，`GIT`，`调试`，`插件`，右侧是打开文件的编辑区域，最多可同时打开三个编辑区域到侧边。
+布局：左侧是用于展示所要编辑的所有文件和文件夹的文件管理器，依次是`资源管理器`，`搜索`，`GIT`，`调试`，`插件`，右侧是打开文件的编辑区域，最多可同时打开三个编辑区域到侧边。
 
-底栏：依次是**`Git Branch`，`error&warning`，`编码格式`**等。
+底栏：依次是`Git Branch`，`error&warning`，`编码格式`等。
 
-**常用插件（待补充）**
+### 常用插件（待补充）
 
 - HTML Snippets：增强了zen-coding，增加了H5的自动补全，安装后每次打开自动启用(可能与其他插件冲突)。
 - Angular 1.x Snippets：增加了AngularJs 1在.html和.js中的代码补全，安装后每次打开自动启用。
@@ -40,9 +41,9 @@ VSCode是微软推出的一款轻量编辑器，采取了和VS相同的UI界面�
 - Debugger for Chrome：方便js调试的插件，前端项目在Chrome中运行起来之后，可以直接在VSCode中打断点、查看输出、查看控制台，需要配置launch.json,详情见插件说明。
 - background：VSCode美化插件，修改界面背景，详情见插件说明。
 
-**常用快捷键（待补充）**
+### 常用快捷键（待补充）
 
-**编辑器与窗口管理**
+### 编辑器与窗口管理
 
 同时打开多个窗口（查看多个项目）
 
@@ -58,9 +59,7 @@ VSCode是微软推出的一款轻量编辑器，采取了和VS相同的UI界面�
 - **3个编辑器之间循环切换 Ctrl+`**
 - **编辑器换位置，Ctrl+k然后按Left或Right**
 
-**代码编辑**
-
-**格式调整**
+### 格式调整
 
 - 代码行缩进Ctrl+[， Ctrl+]
 - **折叠打开代码块 Ctrl+Shift+[， Ctrl+Shift+]**
@@ -72,7 +71,7 @@ VSCode是微软推出的一款轻量编辑器，采取了和VS相同的UI界面�
 - 在当前行下边插入一行Ctrl+Enter
 - 在当前行上方插入一行Ctrl+Shift+Enter
 
-**光标相关**
+### 光标相关
 
 - 移动到行首：Home
 - 移动到行尾：End
@@ -89,7 +88,7 @@ VSCode是微软推出的一款轻量编辑器，采取了和VS相同的UI界面�
 - Ctrl+D下一个匹配的也被选中(被我自定义成删除当前行了，见下边Ctrl+Shift+K)
 - **回退上一个光标操作Ctrl+U**
 
-**重构代码**
+### 重构代码
 
 - 跳转到定义处：F12
 - 定义处缩略图：只看一眼而不跳转过去Alt+F12
@@ -99,19 +98,19 @@ VSCode是微软推出的一款轻量编辑器，采取了和VS相同的UI界面�
 - 跳转到下一个Error或Warning：当有多个错误时可以按F8逐个跳转
 - 查看diff 在explorer里选择文件右键 Set file to compare，然后需要对比的文件上右键选择Compare with 'file_name_you_chose'.
 
-**查找替换**
+### 查找替换
 
 - 查找 Ctrl+F
 - 查找替换 Ctrl+H
 - 整个文件夹中查找 Ctrl+Shift+F
 
-**显示相关**
+### 显示相关
 
 - 全屏：F11
 - zoomIn/zoomOut：Ctrl + =/Ctrl + -
 - 侧边栏显/隐：Ctrl+B
 - **预览markdown Ctrl+Shift+V**
 
-**其他**
+### 其他
 
 - 自动保存：File -> AutoSave ，或者Ctrl+Shift+P，输入 auto

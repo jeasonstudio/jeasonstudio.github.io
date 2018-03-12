@@ -2,6 +2,7 @@
 title: 介绍一个简单功能全面的截图工具
 date: 2016-04-08
 draft: false
+hidden: true
 tags: []
 ---
 

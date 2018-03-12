@@ -25,15 +25,15 @@ tags: [
 
 ## 简介
 
-> **Sass**：2007年诞生，最早也是最成熟的CSS预处理器，拥有ruby社区的支持和compass这一最强大的css框架，目前受LESS影响，已经进化到了全面兼容CSS的SCSS。[sass 中文文档**](http://link.zhihu.com/?target=http%3A//sass.bootcss.com/docs/sass-reference/)[Sass 参考手册**](http://link.zhihu.com/?target=http%3A//sass.bootcss.com/docs/sass-reference/)
+> **Sass**：2007年诞生，最早也是最成熟的CSS预处理器，拥有ruby社区的支持和compass这一最强大的css框架，目前受LESS影响，已经进化到了全面兼容CSS的SCSS。[sass 中文文档](http://link.zhihu.com/?target=http%3A//sass.bootcss.com/docs/sass-reference/)[Sass 参考手册](http://link.zhihu.com/?target=http%3A//sass.bootcss.com/docs/sass-reference/)
 >
-> **Less**：2009年出现，受SASS的影响较大，但又使用CSS的语法，让大部分开发者和设计师更容易上手，在ruby社区之外支持者远超过SASS，其缺点是比起SASS来，可编程功能不够，不过优点是简单和兼容CSS，反过来也影响了SASS演变到了SCSS的时代，著名的Twitter Bootstrap就是采用LESS做底层语言的。[Less 中文文档**](http://link.zhihu.com/?target=http%3A//less.bootcss.com)
+> **Less**：2009年出现，受SASS的影响较大，但又使用CSS的语法，让大部分开发者和设计师更容易上手，在ruby社区之外支持者远超过SASS，其缺点是比起SASS来，可编程功能不够，不过优点是简单和兼容CSS，反过来也影响了SASS演变到了SCSS的时代，著名的Twitter Bootstrap就是采用LESS做底层语言的。[Less 中文文档](http://link.zhihu.com/?target=http%3A//less.bootcss.com)
 >
-> **Stylus**：2010年产生，来自Node.js社区，主要用来给Node项目进行CSS预处理支持，在此社区之内有一定支持者，在广泛的意义上人气还完全不如SASS和LESS。[Stylus 中文文档**](http://link.zhihu.com/?target=http%3A//wiki.jikexueyuan.com/project/harp-doc/Stylus.html)
+> **Stylus**：2010年产生，来自Node.js社区，主要用来给Node项目进行CSS预处理支持，在此社区之内有一定支持者，在广泛的意义上人气还完全不如SASS和LESS。[Stylus 中文文档](http://link.zhihu.com/?target=http%3A//wiki.jikexueyuan.com/project/harp-doc/Stylus.html)
 
 ## Sass
 
-`Sass` 有两种语法，分别以「 *.sass 」和「 *.scss 」为扩展名。这里你可以查看[Sass 和 Scss 的异同**](http://link.zhihu.com/?target=http%3A//sass.bootcss.com/docs/scss-for-sass-users/)。Sass 兼容 css ，你可以在 sass 文件里写 css，也可以严格按照 sass 的缩进方式省去「大括号」和「分号」，最终它们都会被编译成标准 css，比如：
+`Sass` 有两种语法，分别以「 *.sass 」和「 *.scss 」为扩展名。这里你可以查看[Sass 和 Scss 的异同](http://link.zhihu.com/?target=http%3A//sass.bootcss.com/docs/scss-for-sass-users/)。Sass 兼容 css ，你可以在 sass 文件里写 css，也可以严格按照 sass 的缩进方式省去「大括号」和「分号」，最终它们都会被编译成标准 css，比如：
 
 ```sass
 /*style.sass*/
@@ -78,7 +78,7 @@ h1
 
 `Stylus` 扩展名为「 *.styl 」，跟另外两款 css 预处理器相比略显年轻，社区以及推广程度也不及 sass 和 less，但它的一些优秀特性同样令人着迷。
 
-[Nib**](http://link.zhihu.com/?target=https%3A//tj.github.io/nib/)是 `Stylus` 的应用的类库。给你的「 *.styl 」添加 Nib 的最快方式是克隆 Nib 的 Git 版本库并引入，因为有了 Nib，`Stylus` 的高效性才更为突出。
+[Nib](http://link.zhihu.com/?target=https%3A//tj.github.io/nib/)是 `Stylus` 的应用的类库。给你的「 *.styl 」添加 Nib 的最快方式是克隆 Nib 的 Git 版本库并引入，因为有了 Nib，`Stylus` 的高效性才更为突出。
 
 除了包含 Less 的一些优点，`Stylus` 在容错性上的突出特性也十分吸引我，你可以在一个 `Stylus` 文件里这样写，且它们都会被编译成标准 css：
 
@@ -178,7 +178,7 @@ CSS中，不建议用@import导入css，因为会增加http请求。但 CSS 预�
 
 值得注意的是，如果不同文件相互引入的时候，出现相同变量名时可能会引起错误。所以我的建议是单独有一个 var.sass/less/styl 文件来记录所有你定义的变量。
 
-Less 为@Import 扩展了语法，而 Sass 和 Stylus 并没有。具体扩展的 import 语法请见：[Less 的 Import 扩展**](http://link.zhihu.com/?target=http%3A//less.bootcss.com/features/%23import-options)
+Less 为@Import 扩展了语法，而 Sass 和 Stylus 并没有。具体扩展的 import 语法请见：[Less 的 Import 扩展](http://link.zhihu.com/?target=http%3A//less.bootcss.com/features/%23import-options)
 
 ## 总结
 
@@ -191,4 +191,4 @@ Less 为@Import 扩展了语法，而 Sass 和 Stylus 并没有。具体扩展�
 
 > 转载请联系作者：[Jeason-赵吉彤](https://www.zhihu.com/people/JeasonStudio)  
 > 欢迎大家关注我的专栏：[代码小白的日常 - 知乎专栏](https://zhuanlan.zhihu.com/Jeason)  
-> 欢迎在我的 Github 上提 issue：[jeasonstudio (赵吉彤) · GitHub**](http://link.zhihu.com/?target=https%3A//github.com/jeasonstudio/)  
+> 欢迎在我的 Github 上提 issue：[jeasonstudio (赵吉彤) · GitHub](http://link.zhihu.com/?target=https%3A//github.com/jeasonstudio/)  
