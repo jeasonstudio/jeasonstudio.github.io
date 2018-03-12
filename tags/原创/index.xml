@@ -28,7 +28,7 @@
       <pubDate>Thu, 28 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>https://jeasonstudio.github.io/posts/matlab-on-mac/</guid>
-      <description>&lt;h5 id=&#34;工具-octave&#34;&gt;工具：octave&lt;/h5&gt;
+      <description>&lt;h2 id=&#34;工具-octave&#34;&gt;工具：octave&lt;/h2&gt;
 
 &lt;p&gt;​   &lt;a href=&#34;http://wiki.octave.org/GNU_Octave_Wiki&#34;&gt;Octave&lt;/a&gt; 是一个旨在提供与Matlab语法兼容的开放源代码科学计算及数值分析的工具；它提供了方便的互动命令列接口来解决线性与非线性的数值运算问题，并可将计算结果可视化，与高价的商业软体MATLAB语法几乎兼容&lt;/p&gt;
 
@@ -96,7 +96,8 @@
       <pubDate>Sat, 01 Oct 2016 00:00:00 +0000</pubDate>
       
       <guid>https://jeasonstudio.github.io/posts/vscode-tips/</guid>
-      <description>&lt;p&gt;这里提一句，，下面的中文文档是我早期建的一个仓库，希望大家一起来为 VSCode 的中文社区的发展做出贡献，欢迎 fork &amp;amp; star&lt;/p&gt;
+      <description>&lt;p&gt;这里提一句，下面的中文文档是我早期建的一个仓库，希望大家一起来为 &lt;code&gt;VSCode&lt;/code&gt; 的中文社区的发展做出贡献，欢迎 &lt;code&gt;fork &amp;amp; star&lt;/code&gt;&lt;br /&gt;
+最近我打算写一篇 &lt;code&gt;vscode 技巧进阶&lt;/code&gt; 的文章, 将我这些年使用 vscode 的经验沉淀下来(201803)&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>

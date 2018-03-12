@@ -101,7 +101,7 @@
                     </h1>
                     <h2 class="headline">
                     Mar 9, 2017 22:01
-                    · 2654 words
+                    · 2640 words
                     · 6 minute read
                       <span class="tags">
                       
@@ -164,16 +164,16 @@
 <h2 id="简介">简介</h2>
 
 <blockquote>
-<p><strong>Sass</strong>：2007年诞生，最早也是最成熟的CSS预处理器，拥有ruby社区的支持和compass这一最强大的css框架，目前受LESS影响，已经进化到了全面兼容CSS的SCSS。<a href="http://link.zhihu.com/?target=http%3A//sass.bootcss.com/docs/sass-reference/">sass 中文文档**</a><a href="http://link.zhihu.com/?target=http%3A//sass.bootcss.com/docs/sass-reference/">Sass 参考手册**</a></p>
+<p><strong>Sass</strong>：2007年诞生，最早也是最成熟的CSS预处理器，拥有ruby社区的支持和compass这一最强大的css框架，目前受LESS影响，已经进化到了全面兼容CSS的SCSS。<a href="http://link.zhihu.com/?target=http%3A//sass.bootcss.com/docs/sass-reference/">sass 中文文档</a><a href="http://link.zhihu.com/?target=http%3A//sass.bootcss.com/docs/sass-reference/">Sass 参考手册</a></p>
 
-<p><strong>Less</strong>：2009年出现，受SASS的影响较大，但又使用CSS的语法，让大部分开发者和设计师更容易上手，在ruby社区之外支持者远超过SASS，其缺点是比起SASS来，可编程功能不够，不过优点是简单和兼容CSS，反过来也影响了SASS演变到了SCSS的时代，著名的Twitter Bootstrap就是采用LESS做底层语言的。<a href="http://link.zhihu.com/?target=http%3A//less.bootcss.com">Less 中文文档**</a></p>
+<p><strong>Less</strong>：2009年出现，受SASS的影响较大，但又使用CSS的语法，让大部分开发者和设计师更容易上手，在ruby社区之外支持者远超过SASS，其缺点是比起SASS来，可编程功能不够，不过优点是简单和兼容CSS，反过来也影响了SASS演变到了SCSS的时代，著名的Twitter Bootstrap就是采用LESS做底层语言的。<a href="http://link.zhihu.com/?target=http%3A//less.bootcss.com">Less 中文文档</a></p>
 
-<p><strong>Stylus</strong>：2010年产生，来自Node.js社区，主要用来给Node项目进行CSS预处理支持，在此社区之内有一定支持者，在广泛的意义上人气还完全不如SASS和LESS。<a href="http://link.zhihu.com/?target=http%3A//wiki.jikexueyuan.com/project/harp-doc/Stylus.html">Stylus 中文文档**</a></p>
+<p><strong>Stylus</strong>：2010年产生，来自Node.js社区，主要用来给Node项目进行CSS预处理支持，在此社区之内有一定支持者，在广泛的意义上人气还完全不如SASS和LESS。<a href="http://link.zhihu.com/?target=http%3A//wiki.jikexueyuan.com/project/harp-doc/Stylus.html">Stylus 中文文档</a></p>
 </blockquote>
 
 <h2 id="sass">Sass</h2>
 
-<p><code>Sass</code> 有两种语法，分别以「 *.sass 」和「 *.scss 」为扩展名。这里你可以查看<a href="http://link.zhihu.com/?target=http%3A//sass.bootcss.com/docs/scss-for-sass-users/">Sass 和 Scss 的异同**</a>。Sass 兼容 css ，你可以在 sass 文件里写 css，也可以严格按照 sass 的缩进方式省去「大括号」和「分号」，最终它们都会被编译成标准 css，比如：</p>
+<p><code>Sass</code> 有两种语法，分别以「 *.sass 」和「 *.scss 」为扩展名。这里你可以查看<a href="http://link.zhihu.com/?target=http%3A//sass.bootcss.com/docs/scss-for-sass-users/">Sass 和 Scss 的异同</a>。Sass 兼容 css ，你可以在 sass 文件里写 css，也可以严格按照 sass 的缩进方式省去「大括号」和「分号」，最终它们都会被编译成标准 css，比如：</p>
 
 <pre><code class="language-sass">/*style.sass*/
 h1
@@ -218,7 +218,7 @@ h1
 
 <p><code>Stylus</code> 扩展名为「 *.styl 」，跟另外两款 css 预处理器相比略显年轻，社区以及推广程度也不及 sass 和 less，但它的一些优秀特性同样令人着迷。</p>
 
-<p><a href="http://link.zhihu.com/?target=https%3A//tj.github.io/nib/">Nib**</a>是 <code>Stylus</code> 的应用的类库。给你的「 *.styl 」添加 Nib 的最快方式是克隆 Nib 的 Git 版本库并引入，因为有了 Nib，<code>Stylus</code> 的高效性才更为突出。</p>
+<p><a href="http://link.zhihu.com/?target=https%3A//tj.github.io/nib/">Nib</a>是 <code>Stylus</code> 的应用的类库。给你的「 *.styl 」添加 Nib 的最快方式是克隆 Nib 的 Git 版本库并引入，因为有了 Nib，<code>Stylus</code> 的高效性才更为突出。</p>
 
 <p>除了包含 Less 的一些优点，<code>Stylus</code> 在容错性上的突出特性也十分吸引我，你可以在一个 <code>Stylus</code> 文件里这样写，且它们都会被编译成标准 css：</p>
 
@@ -322,7 +322,7 @@ ul,li {
 
 <p>值得注意的是，如果不同文件相互引入的时候，出现相同变量名时可能会引起错误。所以我的建议是单独有一个 var.sass/less/styl 文件来记录所有你定义的变量。</p>
 
-<p>Less 为@Import 扩展了语法，而 Sass 和 Stylus 并没有。具体扩展的 import 语法请见：<a href="http://link.zhihu.com/?target=http%3A//less.bootcss.com/features/%23import-options">Less 的 Import 扩展**</a></p>
+<p>Less 为@Import 扩展了语法，而 Sass 和 Stylus 并没有。具体扩展的 import 语法请见：<a href="http://link.zhihu.com/?target=http%3A//less.bootcss.com/features/%23import-options">Less 的 Import 扩展</a></p>
 
 <h2 id="总结">总结</h2>
 
@@ -338,13 +338,15 @@ ul,li {
 <blockquote>
 <p>转载请联系作者：<a href="https://www.zhihu.com/people/JeasonStudio">Jeason-赵吉彤</a><br />
 欢迎大家关注我的专栏：<a href="https://zhuanlan.zhihu.com/Jeason">代码小白的日常 - 知乎专栏</a><br />
-欢迎在我的 Github 上提 issue：<a href="http://link.zhihu.com/?target=https%3A//github.com/jeasonstudio/">jeasonstudio (赵吉彤) · GitHub**</a></p>
+欢迎在我的 Github 上提 issue：<a href="http://link.zhihu.com/?target=https%3A//github.com/jeasonstudio/">jeasonstudio (赵吉彤) · GitHub</a></p>
 </blockquote>
                 </section>
             </article>
 
             
-                <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fjeasonstudio.github.io%2fposts%2fsass-less-stylus%2f - %e6%b5%85%e8%b0%88%20css%20%e9%a2%84%e5%a4%84%e7%90%86%e5%99%a8%2c%20Sass%e3%80%81Less%20%e5%92%8c%20Stylus by @JeasonStudio"><span class="icon-twitter"> tweet</span></a>
+                分享: 
+
+<a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fjeasonstudio.github.io%2fposts%2fsass-less-stylus%2f - %e6%b5%85%e8%b0%88%20css%20%e9%a2%84%e5%a4%84%e7%90%86%e5%99%a8%2c%20Sass%e3%80%81Less%20%e5%92%8c%20Stylus by @JeasonStudio"><span class="icon-twitter"> tweet</span></a>
 
 
 

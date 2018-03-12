@@ -14,7 +14,8 @@
   
   
   <meta name="twitter:title" content="VSCode 使用小技巧"/>
-  <meta name="twitter:description" content="这里提一句，，下面的中文文档是我早期建的一个仓库，希望大家一起来为 VSCode 的中文社区的发展做出贡献，欢迎 fork &amp; star
+  <meta name="twitter:description" content="这里提一句，下面的中文文档是我早期建的一个仓库，希望大家一起来为 VSCode 的中文社区的发展做出贡献，欢迎 fork &amp; star
+最近我打算写一篇 vscode 技巧进阶 的文章, 将我这些年使用 vscode 的经验沉淀下来(201803)
 
 "/>
   
@@ -101,7 +102,7 @@
                     </h1>
                     <h2 class="headline">
                     Oct 1, 2016 00:00
-                    · 1929 words
+                    · 1960 words
                     · 4 minute read
                       <span class="tags">
                       
@@ -116,32 +117,57 @@
                 </header>
                 
                   
+                    <div id="toc">
+                      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#相关文档">相关文档</a></li>
+<li><a href="#下载">下载</a></li>
+<li><a href="#简介">简介</a>
+<ul>
+<li><a href="#常用插件-待补充">常用插件（待补充）</a></li>
+<li><a href="#常用快捷键-待补充">常用快捷键（待补充）</a></li>
+<li><a href="#编辑器与窗口管理">编辑器与窗口管理</a></li>
+<li><a href="#格式调整">格式调整</a></li>
+<li><a href="#光标相关">光标相关</a></li>
+<li><a href="#重构代码">重构代码</a></li>
+<li><a href="#查找替换">查找替换</a></li>
+<li><a href="#显示相关">显示相关</a></li>
+<li><a href="#其他">其他</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                    </div>
+                  
                 
                 <section id="post-body">
-                    <p>这里提一句，，下面的中文文档是我早期建的一个仓库，希望大家一起来为 VSCode 的中文社区的发展做出贡献，欢迎 fork &amp; star</p>
+                    <p>这里提一句，下面的中文文档是我早期建的一个仓库，希望大家一起来为 <code>VSCode</code> 的中文社区的发展做出贡献，欢迎 <code>fork &amp; star</code><br />
+最近我打算写一篇 <code>vscode 技巧进阶</code> 的文章, 将我这些年使用 vscode 的经验沉淀下来(201803)</p>
 
 <p></p>
 
-<p><strong>相关文档</strong></p>
+<h2 id="相关文档">相关文档</h2>
 
 <ul>
-<li>官方文档（英文版）：<a href="http://link.zhihu.com/?target=https%3A//code.visualstudio.com/docs">Documentation for Visual Studio Code**</a></li>
+<li>官方文档（英文版）：<a href="http://link.zhihu.com/?target=https%3A//code.visualstudio.com/docs">Documentation for Visual Studio Code</a></li>
 <li>中文文档（未完成）：<a href="http://link.zhihu.com/?target=https%3A//github.com/jeasonstudio/CN-VScode-Docs">GitHub - jeasonstudio/CN-VScode-Docs: VScode说明文档翻译</a></li>
 </ul>
 
-<p><strong>下载</strong></p>
+<h2 id="下载">下载</h2>
 
 <p><a href="http://link.zhihu.com/?target=https%3A//code.visualstudio.com/Download">Download Visual Studio Code</a></p>
 
-<p><strong>简介</strong></p>
+<h2 id="简介">简介</h2>
 
 <p>VSCode是微软推出的一款轻量编辑器，采取了和VS相同的UI界面，搭配合适的插件可以优化前端开发的体验。</p>
 
-<p>布局：左侧是用于展示所要编辑的所有文件和文件夹的文件管理器，依次是<code>**资源管理器**</code>，<code>搜索</code>，<code>GIT</code>，<code>调试</code>，<code>插件</code>，右侧是打开文件的编辑区域，最多可同时打开三个编辑区域到侧边。</p>
+<p>布局：左侧是用于展示所要编辑的所有文件和文件夹的文件管理器，依次是<code>资源管理器</code>，<code>搜索</code>，<code>GIT</code>，<code>调试</code>，<code>插件</code>，右侧是打开文件的编辑区域，最多可同时打开三个编辑区域到侧边。</p>
 
-<p>底栏：依次是<strong><code>Git Branch</code>，<code>error&amp;warning</code>，<code>编码格式</code></strong>等。</p>
+<p>底栏：依次是<code>Git Branch</code>，<code>error&amp;warning</code>，<code>编码格式</code>等。</p>
 
-<p><strong>常用插件（待补充）</strong></p>
+<h3 id="常用插件-待补充">常用插件（待补充）</h3>
 
 <ul>
 <li>HTML Snippets：增强了zen-coding，增加了H5的自动补全，安装后每次打开自动启用(可能与其他插件冲突)。</li>
@@ -155,9 +181,9 @@
 <li>background：VSCode美化插件，修改界面背景，详情见插件说明。</li>
 </ul>
 
-<p><strong>常用快捷键（待补充）</strong></p>
+<h3 id="常用快捷键-待补充">常用快捷键（待补充）</h3>
 
-<p><strong>编辑器与窗口管理</strong></p>
+<h3 id="编辑器与窗口管理">编辑器与窗口管理</h3>
 
 <p>同时打开多个窗口（查看多个项目）</p>
 
@@ -177,9 +203,7 @@
 <li><strong>编辑器换位置，Ctrl+k然后按Left或Right</strong></li>
 </ul>
 
-<p><strong>代码编辑</strong></p>
-
-<p><strong>格式调整</strong></p>
+<h3 id="格式调整">格式调整</h3>
 
 <ul>
 <li>代码行缩进Ctrl+[， Ctrl+]</li>
@@ -193,7 +217,7 @@
 <li>在当前行上方插入一行Ctrl+Shift+Enter</li>
 </ul>
 
-<p><strong>光标相关</strong></p>
+<h3 id="光标相关">光标相关</h3>
 
 <ul>
 <li>移动到行首：Home</li>
@@ -212,7 +236,7 @@
 <li><strong>回退上一个光标操作Ctrl+U</strong></li>
 </ul>
 
-<p><strong>重构代码</strong></p>
+<h3 id="重构代码">重构代码</h3>
 
 <ul>
 <li>跳转到定义处：F12</li>
@@ -224,7 +248,7 @@
 <li>查看diff 在explorer里选择文件右键 Set file to compare，然后需要对比的文件上右键选择Compare with &lsquo;file_name_you_chose&rsquo;.</li>
 </ul>
 
-<p><strong>查找替换</strong></p>
+<h3 id="查找替换">查找替换</h3>
 
 <ul>
 <li>查找 Ctrl+F</li>
@@ -232,7 +256,7 @@
 <li>整个文件夹中查找 Ctrl+Shift+F</li>
 </ul>
 
-<p><strong>显示相关</strong></p>
+<h3 id="显示相关">显示相关</h3>
 
 <ul>
 <li>全屏：F11</li>
@@ -241,7 +265,7 @@
 <li><strong>预览markdown Ctrl+Shift+V</strong></li>
 </ul>
 
-<p><strong>其他</strong></p>
+<h3 id="其他">其他</h3>
 
 <ul>
 <li>自动保存：File -&gt; AutoSave ，或者Ctrl+Shift+P，输入 auto</li>
@@ -250,7 +274,9 @@
             </article>
 
             
-                <a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fjeasonstudio.github.io%2fposts%2fvscode-tips%2f - VSCode%20%e4%bd%bf%e7%94%a8%e5%b0%8f%e6%8a%80%e5%b7%a7 by @JeasonStudio"><span class="icon-twitter"> tweet</span></a>
+                分享: 
+
+<a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fjeasonstudio.github.io%2fposts%2fvscode-tips%2f - VSCode%20%e4%bd%bf%e7%94%a8%e5%b0%8f%e6%8a%80%e5%b7%a7 by @JeasonStudio"><span class="icon-twitter"> tweet</span></a>
 
 
 

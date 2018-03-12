@@ -17,7 +17,9 @@
       <pubDate>Fri, 08 Dec 2017 22:32:36 +0800</pubDate>
       
       <guid>https://jeasonstudio.github.io/posts/why-we-ignore-testing/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;这是我在知乎上一个问题的回答&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -49,7 +51,7 @@
       
       <guid>https://jeasonstudio.github.io/posts/markdown-guideline/</guid>
       <description>&lt;p&gt;Markdown 的目标是实现「易读易写」。可读性，无论如何，都是最重要的。&lt;br /&gt;
-一份使用 Markdown 格式撰写的文件应该可以直接以纯文本发布，并且看起来不会像是由许多标签或是格式指令所构成。&lt;/p&gt;
+一份使用 &lt;code&gt;Markdown&lt;/code&gt; 格式撰写的文件应该可以直接以纯文本发布，并且看起来不会像是由许多标签或是格式指令所构成。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
