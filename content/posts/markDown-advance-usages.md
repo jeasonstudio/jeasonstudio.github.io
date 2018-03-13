@@ -28,11 +28,13 @@ tags: [
 
 Something like `aaa[^1]`
 
-* Test footer note[^1]
-* Test message[^t2]
+* Test footer note<sup><a id="fn1b" href="#fn1">note1</a></sup>
+* Test message<sup><a id="fn2b" href="#fn2">note2</a></sup>
+* shit[^22]
 
-1. [^1]: Blabla
-2. [^t2]: Bla
+1. <a id="fn1" href="#fn1b">note1</a>: Blabla
+2. <a id="fn2" href="#fn2b">note2</a>: Bla
+3. [^22]: aaa
 
 ## 0x03 LaTex 数学公式
 
