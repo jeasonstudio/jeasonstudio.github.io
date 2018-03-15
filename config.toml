@@ -1,7 +1,7 @@
 # Site settings
 baseurl = "https://jeasonstudio.github.io/"
 languageCode = "zh-CN"
-title = "JeasonBlog"
+title = "Jeason Blog"
 theme = "hugo-theme-cactus-plus"
 # googleAnalytics = "your_google_analytics_id"
 # Set the value to true if your site include CJK (Chinese, Japanese, and Korean languages) characters

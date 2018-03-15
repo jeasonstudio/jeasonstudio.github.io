@@ -2,8 +2,11 @@
 
 ## Todos
 
-1. ~~接入 Gitment, [https://imsun.net/posts/gitment-introduction/](https://imsun.net/posts/gitment-introduction/)~~
-2. ~~做一些改造: 在 `hugo new posts/{test.md}}` 时, 去项目的 issue 下建一个 title 等同文件名的 issue~~
-3. [ ] 更好的实现图床功能, 或者图床脚本
-4. [ ] `social.html` 添加更多的分享, 主要是 [知乎想法, 微信朋友圈(手机)]
-5. [x] 考虑使用 Gitalk: [https://gitalk.github.io/](https://gitalk.github.io/)
+* [x] 接入评论系统:
+  * [x] 使用 Gitalk: [https://gitalk.github.io/](https://gitalk.github.io/)
+* [ ] 更好的实现图床功能, 或者图床脚本(issues?)
+* [ ] `social.html` 添加更多的分享途径, 比如 [知乎想法, 微信朋友圈(手机)]
+* [ ] 改进为 PWA, 增加 `service_worker` 支持
+* [ ] 优化 `SEO`
+* [ ] 添加打点和 `tracing`
+* [ ] 站内搜索功能 `algolia`

@@ -18,6 +18,10 @@ span {
   max-width: 800px;
 }
 
+body {
+  font-family: consolas, 'Helvetica Neue', Helvetica, Arial, sans-serif!important;
+}
+
 /* footnote */
 sup, sub {
   vertical-align: baseline;
