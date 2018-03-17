@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 
+			
+  
+    <meta name="twitter:card" content="summary"/>
+    
+      <meta name="twitter:image" content="https://jeasonstudio.github.io/images/avatar.png" />
+    
+  
+  
+  <meta name="twitter:title" content="API 设计最佳实践(一) Restful"/>
+  <meta name="twitter:description" content="Web APIs 的设计随着前后端的分离, 在近些年变得越来越重要. 对于 Restful API, 网上相关的介绍文章已经足够多了, 建议在阅读本文前对 restful 理念有一些了解.
+
+"/>
+  
+    <meta name="twitter:site" content="@JeasonStudio"/>
+  
+  
+  
+  
+    <meta name="twitter:creator" content="@Jeason"/>
+  
+
+
+
+		
+		<meta name="author" content="Jeason">
+		<meta name="description" content="Jeason&#39;s person blog">
+		<meta name="generator" content="Hugo 0.33" />
+		<title>API 设计最佳实践(一) Restful &middot; Jeason Blog</title>
+		<link rel="shortcut icon" href="https://jeasonstudio.github.io/images/favicon.ico">
+		<link rel="stylesheet" href="https://jeasonstudio.github.io/css/style.css">
+		<link rel="stylesheet" href="https://jeasonstudio.github.io/css/highlight.css">
+
+		
+		<link rel="stylesheet" href="https://jeasonstudio.github.io/css/font-awesome.min.css">
+		
+
+		
+		<link href="https://jeasonstudio.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Jeason Blog" />
+		
+
+		
+		<link rel="stylesheet" href="https://jeasonstudio.github.io/./css/custom.css">
+		
+
+		
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({
+				tex2jax: {
+					inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+					processEscapes: true
+				}
+			});
+		</script>
+		<script src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+		
+		<script src="https://cdn.bootcss.com/raphael/2.2.7/raphael.min.js"></script>
+		<script src="https://cdn.bootcss.com/flowchart/1.8.0/flowchart.min.js"></script>
+
+		
+		<script src="https://cdn.bootcss.com/underscore.js/1.4.4/underscore-min.js"></script>
+		<script src="https://cdn.bootcss.com/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
+
+		
+		<script src="https://cdn.bootcss.com/viz.js/1.8.1-pre.4/viz-lite.js"></script>
+
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+		<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?45df9d6f1bdcea6e35e39de34dab54c1";
+				var s = document.getElementsByTagName("script")[0]; 
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>			
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='https://jeasonstudio.github.io/'> <span class="arrow">←</span>Home</a>
+	
+	<a href='https://jeasonstudio.github.io/posts'>Archive</a>
+	<a href='https://jeasonstudio.github.io/tags'>Tags</a>
+	<a href='https://jeasonstudio.github.io/about'>About</a>
+
+	
+
+	
+	<a class="cta" href="https://jeasonstudio.github.io/index.xml">Subscribe</a>
+	
+</nav>
+
+
+        <section id="wrapper" class="post">
+            <article>
+                <header>
+                    <h1>
+                        API 设计最佳实践(一) Restful
+                    </h1>
+                    <h2 class="headline">
+                    Mar 17, 2018 13:56
+                    · 1506 words
+                    · 4 minute read
+                      <span class="tags">
+                      
+                      
+                          
+                              <a href="https://jeasonstudio.github.io/tags/front-end">front-end</a>
+                          
+                              <a href="https://jeasonstudio.github.io/tags/%E5%8E%9F%E5%88%9B">原创</a>
+                          
+                      
+                      
+                      </span>
+                    </h2>
+                </header>
+                
+                  
+                    <div id="toc">
+                      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#0x00-正确理解-method-的语义">0x00 正确理解 Method 的语义</a></li>
+<li><a href="#0x01-get-方法或其参数不应有副作用">0x01 GET 方法或其参数不应有副作用</a></li>
+<li><a href="#0x02-uri-中尽量使用复数名词">0x02 URI 中尽量使用复数名词</a></li>
+<li><a href="#0x03-要善于建立父子资源的关联">0x03 要善于建立父子资源的关联</a></li>
+<li><a href="#0x04-选择合适的-content-type-序列化请求">0x04 选择合适的 <code>Content-Type</code> 序列化请求</a></li>
+<li><a href="#0x05-统一化资源的筛选或分页设计">0x05 统一化资源的筛选或分页设计</a>
+<ul>
+<li><a href="#过滤">过滤</a></li>
+<li><a href="#排序">排序</a></li>
+<li><a href="#字段选择">字段选择</a></li>
+<li><a href="#长列表分页">长列表分页</a></li>
+</ul></li>
+<li><a href="#0x06-在你的-restfulapi-中增加版本">0x06 在你的 RestfulAPI 中增加版本</a></li>
+<li><a href="#0x07-规范化错误请求">0x07 规范化错误请求</a></li>
+<li><a href="#参考链接">参考链接</a></li>
+</ul></li>
+</ul>
+</nav>
+                    </div>
+                  
+                
+                <section id="post-body">
+                    <p><code>Web APIs</code> 的设计随着前后端的分离, 在近些年变得越来越重要. 对于 Restful API, 网上相关的介绍文章已经足够多了, 建议在阅读本文前对 <code>restful</code> 理念有一些了解.</p>
+
+<p></p>
+
+<h2 id="0x00-正确理解-method-的语义">0x00 正确理解 Method 的语义</h2>
+
+<p>我们时常会发现某些系统的 api 设计非常难以理解, 比如全部都是 <code>post</code>. 这是非常不负责任的行为, 下面简单介绍下各个 method 的语义:</p>
+
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>GET</th>
+<th>POST</th>
+<th>PUT</th>
+<th>PATCH</th>
+<th>DELETE</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>/cars</code></td>
+<td>列出所有 <code>cars</code> 资源(<code>URI</code>)</td>
+<td>新增一条 <code>car</code> 资源</td>
+<td>批量更新 <code>car</code> 资源</td>
+<td>x</td>
+<td>删除全部 <code>car</code> 资源</td>
+</tr>
+
+<tr>
+<td><code>/cars/:carId</code></td>
+<td>获取 <code>carId</code> 资源的信息</td>
+<td><code>405 Method not allowed</code></td>
+<td>更新 <code>carId</code> 资源</td>
+<td>部分更新 <code>carId</code> 资源</td>
+<td>删除该资源</td>
+</tr>
+</tbody>
+</table>
+
+<p>可以看到, 我们在设计接口的时候是围绕 <code>资源 URI</code> 来讲的, 而不是某个动作, 我们不应该在设计接口时用 <code>URL</code> 代替 <code>Method</code>, 保持 <code>URI</code> 的 <code>non-verb</code>, 不要设计成: <code>/getAllCars</code> <code>/createNewCar</code> <code>/deleteAllRedCars</code><br />
+Btw, URL 不应该对大小写有任何依赖</p>
+
+<h2 id="0x01-get-方法或其参数不应有副作用">0x01 GET 方法或其参数不应有副作用</h2>
+
+<p>GET 方法不应该改变任何资源的状态, 也不能对资源有其他副作用, 下面的设计是违反 <code>Restful</code> 设计原则的:</p>
+
+<ul>
+<li>GET <code>/users/711?activate</code></li>
+<li>GET <code>/users/711/activate</code></li>
+</ul>
+
+<h2 id="0x02-uri-中尽量使用复数名词">0x02 URI 中尽量使用复数名词</h2>
+
+<p>最根本的原则是不能混用单数和复数名词, 不统一会给其他人带来很大的困惑, 所以为了简洁和语义的正确性, 要尽量使用复数名词.</p>
+
+<ul>
+<li>用 <code>/cars</code> 代替 <code>/car</code></li>
+<li>用 <code>/users</code> 代替 <code>/user</code></li>
+<li>用 <code>/products</code> 代替 <code>/product</code></li>
+<li>用 <code>/settings</code> 代替 <code>/setting</code></li>
+</ul>
+
+<h2 id="0x03-要善于建立父子资源的关联">0x03 要善于建立父子资源的关联</h2>
+
+<p>当资源之间有关联时, 要善于建立父子资源之间的关系, 这些关系最好在 <code>URI</code> 中表达而不是参数中, 简单关联都可以这样处理.</p>
+
+<ul>
+<li>GET <code>/cars/:carId/drivers/</code> 返回 :carId 下所有 driver 的 list</li>
+<li>GET <code>/cars/:carId/drivers/:driverId</code> 返回 :carId 下 :driverId 的信息</li>
+</ul>
+
+<h2 id="0x04-选择合适的-content-type-序列化请求">0x04 选择合适的 <code>Content-Type</code> 序列化请求</h2>
+
+<p>无论客户端还是服务端, 都应该对 <code>Content-Type</code> 的选择有个清醒的认识, 它存在于 <code>HTTP Header</code> 中, 本意是表达资源的文件格式, 但在 <code>API</code> 中也表达了请求的序列化方式, 这些是我们比较常见的:</p>
+
+<ul>
+<li><code>application/x-www-form-urlencoded</code></li>
+<li><code>multipart/form-data</code></li>
+<li><code>application/json</code></li>
+</ul>
+
+<p>根据请求体(响应体)数据格式来选择合适的序列化方式, 并不是表单一定是 <code>x-www-form-urlencoded</code>, 也不是响应一定要 <code>application/json</code>, 从需求出发, 该返回 ID 就不要套一层 <code>json</code></p>
+
+<h2 id="0x05-统一化资源的筛选或分页设计">0x05 统一化资源的筛选或分页设计</h2>
+
+<h3 id="过滤">过滤</h3>
+
+<p>对所有字段或查询使用统一的查询参数进行过滤:</p>
+
+<ul>
+<li>GET <code>/cars?color=red</code> 返回所有颜色为红色的车</li>
+<li>GET <code>/cars?seats&lt;=2</code> 返回所有座位小于两个的车</li>
+</ul>
+
+<h3 id="排序">排序</h3>
+
+<p>允许对多个字段, 或一个字段多个维度的排序</p>
+
+<ul>
+<li>GET <code>/cars?sort=-manufactorer,+model</code> 返回按制造商降序和型号升序排序的汽车列表</li>
+</ul>
+
+<h3 id="字段选择">字段选择</h3>
+
+<p>(我想说, 这方面 <code>Restful</code> 还是太弱了, 下篇文章主要介绍下 <code>Graphql</code> 做对比)</p>
+
+<p>有时候我们不想请求资源的全部信息, 返回资源信息由前端来确定, 这就需要有一个统一的设计作为约定, 比如:</p>
+
+<ul>
+<li>GET <code>/cars?fields=manufacturer,model,id,color</code></li>
+</ul>
+
+<h3 id="长列表分页">长列表分页</h3>
+
+<p>分页设计也是一个老生常谈的话题, 目前主要分为两类, 如何选择既要考虑到你的业务场景, 也要考虑到数据量及实现的难易</p>
+
+<ol>
+<li><p><code>limit</code> 和 <code>offset</code></p>
+
+<p><code>limit</code> 代表每页的条数, <code>offset</code> 代表偏移的条数, 一般需要和前端分页相结合, 适用于 <code>table</code> 分页, 而且前端需要知道总共的条数, 这能给用户以极大的安全感和使用体验</p>
+
+<ul>
+<li>GET <code>/cars?limit=5&amp;offset=10</code></li>
+</ul></li>
+
+<li><p><code>limit</code> 和 <code>lastIndex</code></p>
+
+<p><code>limit</code> 代表请求条数, <code>lastIndex</code> 代表上一条的索引, 这样设计适用于长列表的场景, 支持无限滚动, 但在 <code>table</code> 多页时却显得很鸡肋, 用户无法跳页, 这是难以被接受的</p>
+
+<ul>
+<li>GET <code>/cars?limit=5&amp;lastIndex=10</code></li>
+</ul></li>
+</ol>
+
+<p>如何返回总条数也值得我们讨论, 其中比较好的实现方式是放在响应头中: <code>X-Total-Count: 200</code></p>
+
+<h2 id="0x06-在你的-restfulapi-中增加版本">0x06 在你的 RestfulAPI 中增加版本</h2>
+
+<p>因为你的产品肯定需要迭代重构的, 你的接口肯定会因为各种原因重写的, 为了避免麻烦, 还是加上版本吧: <code>/api/v1</code></p>
+
+<h2 id="0x07-规范化错误请求">0x07 规范化错误请求</h2>
+
+<p>世界上并不是只有 <code>200</code>, <code>404</code> 和 <code>500</code> 这三个 <code>status code</code>, 对于简单的, 语义化的错误, 我们不需要单独的去约定一种错误返回格式, 这是非常中二的, 经常会看到有些人设计的 API 返回格式为 <code>{ code: -1, errMsg: 'not found' }</code></p>
+
+<p>首先, 要尽可能用 <code>http status code</code> 来表达错误信息, 一些常用的:</p>
+
+<ul>
+<li>200 – OK – Eyerything is working</li>
+<li>201 – OK – New resource has been created</li>
+<li>204 – OK – The resource was successfully deleted</li>
+<li>304 – Not Modified – The client can use cached data</li>
+<li>400 – Bad Request – The request was invalid or cannot be served. The exact error should be explained in the error payload. E.g. „The JSON is not valid“</li>
+<li>401 – Unauthorized – The request requires an user authentication</li>
+<li>403 – Forbidden – The server understood the request, but is refusing it or the access is not allowed.</li>
+<li>404 – Not found – There is no resource behind the URI.</li>
+<li>422 – Unprocessable Entity – Should be used if the server cannot process the enitity, e.g. if an image cannot be formatted or mandatory fields are missing in the payload.</li>
+<li>500 – Internal Server Error – API developers should avoid this error. If an error occurs in the global catch blog, the stracktrace should be logged and not returned as response.</li>
+</ul>
+
+<p>业务逻辑层的错误, 需要约定返回错误格式, 举个栗子:</p>
+
+<pre><code class="language-json">{
+  &quot;errors&quot;: [
+    {
+      &quot;userMessage&quot;: &quot;Sorry, the requested resource does not exist&quot;,
+      &quot;internalMessage&quot;: &quot;No car found in the database&quot;,
+    }
+  ]
+}
+</code></pre>
+
+<h2 id="参考链接">参考链接</h2>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Representational_state_transfer">https://en.wikipedia.org/wiki/Representational_state_transfer</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type</a></li>
+</ul>
+                </section>
+            </article>
+
+            
+                分享: 
+
+<a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fjeasonstudio.github.io%2fposts%2frestfulapi-best-practice%2f - API%20%e8%ae%be%e8%ae%a1%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%28%e4%b8%80%29%20Restful by @JeasonStudio"><span class="icon-twitter"> tweet</span></a>
+
+
+
+<div id="gitalk-container"></div>
+
+            
+
+            
+
+            
+
+            <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    <a class="symbol" href="https://www.github.com/jeasonstudio">
+        <i class="fa fa-github-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://www.twitter.com/JeasonStudio">
+        <i class="fa fa-twitter-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://www.github.com/jeasonstudio">
+        <i class="fa fa-zhihu-square"></i>
+    </a>
+    
+
+
+</div>
+
+    
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <p class="small">
+        <span id="busuanzi_container_site_pv">本站总访问量 <span id="busuanzi_value_site_pv"></span> 次</span>
+    </p>
+    <p class="small">
+    
+       &copy; Copyright 2018 <i class="fa fa-heart" aria-hidden="true"></i> Jeason
+    
+
+       - Powered by <a href="http://www.gohugo.io/">Hugo</a> Theme By <a href="https://github.com/nodejh/hugo-theme-cactus-plus">nodejh</a>
+    </p>
+</footer>
+
+        </section>
+
+        <script src="https://jeasonstudio.github.io/js/jquery-3.3.1.min.js"></script>
+<script src="https://jeasonstudio.github.io/js/main.js"></script>
+<script src="https://jeasonstudio.github.io/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script src="https://jeasonstudio.github.io/./js/diagram.js"></script>
+
+<script src="https://jeasonstudio.github.io/./js/gitalk.js"></script>
+
+
+
+
+
+
+    </body>
+</html>
