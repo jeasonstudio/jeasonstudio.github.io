@@ -1,7 +1,7 @@
 ---
 title: 简述垃圾回收(GC)算法及其在 GoLang 和 V8 中的实现
 date: 2018-03-08T22:40:47+08:00
-draft: true
+draft: false
 tags: [
   "front-end",
   "原创"

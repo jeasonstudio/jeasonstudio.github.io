@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>https://jeasonstudio.github.io/posts/gc-golang-v8/</loc>
+    <lastmod>2018-03-08T22:40:47+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://jeasonstudio.github.io/posts/markdown-advance-usages/</loc>
     <lastmod>2018-01-10T22:36:14+08:00</lastmod>
   </url>
@@ -30,6 +35,11 @@
   <url>
     <loc>https://jeasonstudio.github.io/posts/git-commit-message-rebase/</loc>
     <lastmod>2017-06-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jeasonstudio.github.io/posts/graphql-best-practice/</loc>
+    <lastmod>2017-05-20T22:12:01+08:00</lastmod>
   </url>
   
   <url>
