@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		 
+			
+  
+    <meta name="twitter:card" content="summary"/>
+    
+      <meta name="twitter:image" content="https://jeasonstudio.github.io/images/avatar.png" />
+    
+  
+  
+  <meta name="twitter:title" content="API 设计最佳实践(二) GraphQL"/>
+  <meta name="twitter:description" content="设计一个好的 「GraphQL API/Schema」 很有挑战，我们总是想在健壮性和便利性之间找到一个平衡，同时还要考虑 API 将来如何演变。
+
+"/>
+  
+    <meta name="twitter:site" content="@JeasonStudio"/>
+  
+  
+  
+  
+    <meta name="twitter:creator" content="@Jeason"/>
+  
+
+
+
+		
+		<meta name="author" content="Jeason">
+		<meta name="description" content="Jeason&#39;s person blog">
+		<meta name="generator" content="Hugo 0.33" />
+		<title>API 设计最佳实践(二) GraphQL &middot; Jeason Blog</title>
+		<link rel="shortcut icon" href="https://jeasonstudio.github.io/images/favicon.ico">
+		<link rel="stylesheet" href="https://jeasonstudio.github.io/css/style.css">
+		<link rel="stylesheet" href="https://jeasonstudio.github.io/css/highlight.css">
+
+		
+		<link rel="stylesheet" href="https://jeasonstudio.github.io/css/font-awesome.min.css">
+		
+
+		
+		<link href="https://jeasonstudio.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Jeason Blog" />
+		
+
+		
+		<link rel="stylesheet" href="https://jeasonstudio.github.io/./css/custom.css">
+		
+
+		
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({
+				tex2jax: {
+					inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+					processEscapes: true
+				}
+			});
+		</script>
+		<script src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+		
+		<script src="https://cdn.bootcss.com/raphael/2.2.7/raphael.min.js"></script>
+		<script src="https://cdn.bootcss.com/flowchart/1.8.0/flowchart.min.js"></script>
+
+		
+		<script src="https://cdn.bootcss.com/underscore.js/1.4.4/underscore-min.js"></script>
+		<script src="https://cdn.bootcss.com/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
+
+		
+		<script src="https://cdn.bootcss.com/viz.js/1.8.1-pre.4/viz-lite.js"></script>
+
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+		<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?45df9d6f1bdcea6e35e39de34dab54c1";
+				var s = document.getElementsByTagName("script")[0]; 
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>			
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='https://jeasonstudio.github.io/'> <span class="arrow">←</span>Home</a>
+	
+	<a href='https://jeasonstudio.github.io/posts'>Archive</a>
+	<a href='https://jeasonstudio.github.io/tags'>Tags</a>
+	<a href='https://jeasonstudio.github.io/about'>About</a>
+
+	
+
+	
+	<a class="cta" href="https://jeasonstudio.github.io/index.xml">Subscribe</a>
+	
+</nav>
+
+
+        <section id="wrapper" class="post">
+            <article>
+                <header>
+                    <h1>
+                        API 设计最佳实践(二) GraphQL
+                    </h1>
+                    <h2 class="headline">
+                    May 20, 2018 22:12
+                    · 2067 words
+                    · 5 minute read
+                      <span class="tags">
+                      
+                      
+                          
+                              <a href="https://jeasonstudio.github.io/tags/%E5%8E%9F%E5%88%9B">原创</a>
+                          
+                              <a href="https://jeasonstudio.github.io/tags/front-end">front-end</a>
+                          
+                      
+                      
+                      </span>
+                    </h2>
+                </header>
+                
+                  
+                    <div id="toc">
+                      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#0x00-命名">0x00 命名</a></li>
+<li><a href="#0x01-惯用-图-的思维">0x01 惯用「图」的思维</a></li>
+<li><a href="#0x02-类型系统">0x02 类型系统</a></li>
+<li><a href="#0x03-graphql-版本控制">0x03 GraphQL 版本控制</a></li>
+<li><a href="#0x04-避免无意义的查询">0x04 避免无意义的查询</a></li>
+<li><a href="#0x05-总结">0x05 总结</a></li>
+</ul></li>
+</ul>
+</nav>
+                    </div>
+                  
+                
+                <section id="post-body">
+                    <p>设计一个好的 「GraphQL API/Schema」 很有挑战，我们总是想在健壮性和便利性之间找到一个平衡，同时还要考虑 API 将来如何演变。</p>
+
+<p></p>
+
+<h2 id="0x00-命名">0x00 命名</h2>
+
+<p>无论是 Restful 还是 GraphQL，一个统一且明确的命名风格将有助于项目的良性发展。不同于 Restful，后者弱化了 HTTP Method 在接口层中的作用，所以，用资源来设计 URI 的思路已经不适用，GraphQL 中每一个 Mutation 的行为需要被准确的指明。</p>
+
+<ul>
+<li>遵循 GraphQL 中对 Mutation 和 Query 的约定是最基本的，如果你的请求会对后端持久层数据产生 「Side Effects」，那你需要把它放进 Mutation 中。</li>
+<li>Mutation 中的 API，应遵循「动词开头 (Verb First)」原则，后面接你要操作的「资源名」，「动词」的选择也不是任意的，除了「增删改」之外，前后端应当有统一且成文的约定。这种「面向资源对象」的命名设计会让你的接口看起来很清晰。
+Query 中的 API 应当围绕资源的「关系」去设计，命名方面要尽量减少动词出现。</li>
+</ul>
+
+<pre><code class="language-graphql">type Query {
+  users(): [UserInfo!]!
+  user(): UserInfo!
+}
+type Mutation {
+  createUser(name: String!): UserInfo!
+  buyCars(uId: ID!): [CarsId!]!
+}
+</code></pre>
+
+<h2 id="0x01-惯用-图-的思维">0x01 惯用「图」的思维</h2>
+
+<p>无论 GraphQL 还是 Restful，本质上都可认为是 「数据库 schema」和「前端数据结构」之间做桥接的中间层数据结构，而二者的区别之一就是 GraphQL 强化了「图」的概念，能更方便的表达资源与资源的关系。</p>
+
+<p>如果你平时习惯于 Restful API 的设计，在制定 GraphQL Schema 时常常会陷入误区：
+* 思维仍然停留在「endpoint」的设计上，并且十分想把它带到 GraphQL 中
+* 仍想尝试构建出「资源 =&gt; 操作」的模式
+* 「公共资源类型」设计的不够好以至于不能复用
+* 等等</p>
+
+<pre><code class="language-graphql"># [x] Restful like
+{
+  user {
+    create（...） { ... }
+  }
+}
+</code></pre>
+
+<p>当我们尝试新增一个 GraphQL 资源对象时，应考虑 「客户端可能需要从该对象访问哪些其他数据或关系？」，如果有，考虑「如何建立对象之间的关系并做到最大化复用？」。</p>
+
+<p>我认为这部分可以参考数据库 schema 的设计流程，先画「实体-关系图 (E-R Model, <a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Entity%25E2%2580%2593relationship_model">what is ermodel</a>)」，在ER图基础上调整。</p>
+
+<p><img src="https://pic2.zhimg.com/80/v2-74d4e35439d9896545bc52ee77735c2d_hd.jpg" alt="er" /></p>
+
+<p>可以看到，设计 GraphQL 接口更像是在建立资源与资源之间的关系，并最终得到一个单一内聚图的过程。在 Restful 大行其道的时代，GraphQL 给了我们一种基于「图」的设计思路，就像吃多了家常菜尝试下西餐牛排，可能家里人(传统后端开发)不太喜欢这种改变，但它的魅力还是吸引着年轻人(活跃前端开发) 不断尝试。</p>
+
+<p>另外，我们应当尽量去减少「GraphQL 和 数据库 schema」，「Graphql 和 前端数据结构」之间的耦合，前端数据设计面向前端逻辑，数据库 schema 面向持久层数据设计，GraphQL 应当尽量去中和前后端数据的「结构性差异」。</p>
+
+<p>所以我始终认为，接口设计应当「前端&amp;后端」合作完成，现实是大部分情况下后端都占了主导地位，后果就是前端数据结构的设计会被接口制约，逻辑复杂后越来越难以维护。</p>
+
+<h2 id="0x02-类型系统">0x02 类型系统</h2>
+
+<p>类型系统是 GraphQL 相较于 Restful 的优势吗？很多人都有这种主观的看法，但事实是 Restful OpenAPI Spec 中对类型的约规更加细致、全面（感谢 swagger 的贡献）。</p>
+
+<p>GraphQL 中类型的设计上手难度很低，如果你有「强类型语言 or Flow/Typescript 的开发经验」，写起来可以说毫不费力，其中需要注意的是 GraphQL 本身是不支持 Map 类型的（因为这违背了它设计的理念），那么如何做到 GraphQL 接口返回一个不确定 key 值的 Object 呢：</p>
+
+<pre><code class="language-js">// https://github.com/graphql/graphql-js/issues/290
+function parseLiteral(ast) {
+  switch (ast.kind) {
+    case Kind.STRING:
+    case Kind.BOOLEAN:
+      return ast.value
+    case Kind.INT:
+    case Kind.FLOAT:
+      return parseFloat(ast.value)
+    case Kind.OBJECT: {
+      const value = Object.create(null)
+      ast.fields.forEach(field =&gt; {
+        value[field.name.value] = parseLiteral(field.value)
+      })
+      return value
+    }
+    case Kind.LIST:
+      return ast.values.map(parseLiteral)
+    default:
+      return null
+  }
+}
+module.exports = {
+  // https://stackoverflow.com/questions/41557536/custom-map-keys-in-graphql-response
+  Row: new GraphQLScalarType({
+    name: 'Row',
+    description: 'This type bypasses type checking.',
+    parseLiteral,
+    parseValue (value) { return value },
+    serialize (value) { return value },
+  }),
+}
+</code></pre>
+
+<h2 id="0x03-graphql-版本控制">0x03 GraphQL 版本控制</h2>
+
+<p>GraphQL 本质是用来描述数据结构的，对于接口版本没有任何明确的支持，但是你依然可以通过「endpoint」来区分接口版本（Restful like）。</p>
+
+<blockquote>
+<p>Why do most APIs version? When there’s limited control over the data that’s returned from an API endpoint, any change can be considered a breaking change, and breaking changes require a new version. If adding new features to an API requires a new version, then a tradeoff emerges between releasing often and having many incremental versions versus the understandability and maintainability of the API.</p>
+</blockquote>
+
+<p>这段话是官方对此的说明，GraphQL 认为，由于仅返回明确的请求数据，所以设计良好的「GraphQL API」不存在「接口突变」的情况，这是从「版本化」到「无版本」的一个明确转变，而且是「GraphQL」的设计精髓。</p>
+
+<h2 id="0x04-避免无意义的查询">0x04 避免无意义的查询</h2>
+
+<p>GraphQL 设计中有一个典型问题：差劲的 schema resolver 会带来大量不必要的数据库查询。</p>
+
+<p>以关系型数据库举例，在请求嵌套对象时会用到 JOIN 查询，这部分我了解过很多最佳实践，都没能给出一个完美的解决方案，个人来讲有这么几个小 tip：</p>
+
+<ul>
+<li>如果某个类型的某个关联值是可选的，且查询十分耗性能，那么在请求中增加一个参数来告诉后端到底要不要去执行这个耗时的查询操作</li>
+<li>在缓存层做一些处理，比如我一个分页场景，需要每次都去统计总条数吗，显然，不做缓存可能会带来一些性能问题</li>
+<li>将某些「耗性能且非必选的字段」设计成嵌套查询，因为如果前端调接口时不请求某个嵌套分支，其对应的 resolver 不会执行，就避免了无谓查询（本质上和第二点相同）</li>
+</ul>
+
+<p>总之，凡事有利有弊，我们能做的只是将它的优点最大化。</p>
+
+<h2 id="0x05-总结">0x05 总结</h2>
+
+<p>本文只是简单的介绍了一些技巧和常遇到的问题，希望能起到一个抛砖引玉的作用，欢迎讨论。</p>
+
+<p>GraphQL 的出现拓宽了我们对于前端数据流的认知，而且就近些年来看，越来越多的公司或组织已经开始尝试使用 GraphQL 了。在用好 GraphQL 的同时，我们要保持思考，时刻迸发出新的、更好的解决思路，比如，我们对于数据流是否有更大的能力？我们如何将这种数据中间层的概念拓展出去？等等。</p>
+                </section>
+            </article>
+
+            
+                分享: 
+
+<a class="twitter" href="https://twitter.com/intent/tweet?text=https%3a%2f%2fjeasonstudio.github.io%2fposts%2fgraphql-best-practice%2f - API%20%e8%ae%be%e8%ae%a1%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%28%e4%ba%8c%29%20GraphQL by @JeasonStudio"><span class="icon-twitter"> tweet</span></a>
+
+
+
+<div id="gitalk-container"></div>
+
+            
+
+            
+
+            
+
+            <footer id="footer">
+    
+        <div id="social">
+
+	
+	
+    <a class="symbol" href="https://www.github.com/jeasonstudio">
+        <i class="fa fa-github-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://www.twitter.com/JeasonStudio">
+        <i class="fa fa-twitter-square"></i>
+    </a>
+    
+    <a class="symbol" href="https://www.github.com/jeasonstudio">
+        <i class="fa fa-zhihu-square"></i>
+    </a>
+    
+
+
+</div>
+
+    
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <p class="small">
+        <span id="busuanzi_container_site_pv">本站总访问量 <span id="busuanzi_value_site_pv"></span> 次</span>
+    </p>
+    <p class="small">
+    
+       &copy; Copyright 2018 <i class="fa fa-heart" aria-hidden="true"></i> Jeason
+    
+
+       - Powered by <a href="http://www.gohugo.io/">Hugo</a> Theme By <a href="https://github.com/nodejh/hugo-theme-cactus-plus">nodejh</a>
+    </p>
+</footer>
+
+        </section>
+
+        <script src="https://jeasonstudio.github.io/js/jquery-3.3.1.min.js"></script>
+<script src="https://jeasonstudio.github.io/js/main.js"></script>
+<script src="https://jeasonstudio.github.io/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script src="https://jeasonstudio.github.io/./js/diagram.js"></script>
+
+<script src="https://jeasonstudio.github.io/./js/gitalk.js"></script>
+
+
+
+
+
+
+    </body>
+</html>
