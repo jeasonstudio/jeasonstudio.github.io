@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Workflow on Jeason Blog</title>
-    <link>https://jeasonstudio.github.io/tags/workflow/</link>
+    <link>https://jeasonstudio.coding.me/tags/workflow/</link>
     <description>Recent content in Workflow on Jeason Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Thu, 01 Jun 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://jeasonstudio.github.io/tags/workflow/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jeasonstudio.coding.me/tags/workflow/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>关于 Git Commit Message 和 git rebase</title>
-      <link>https://jeasonstudio.github.io/posts/git-commit-message-rebase/</link>
+      <link>https://jeasonstudio.coding.me/posts/git-commit-message-rebase/</link>
       <pubDate>Thu, 01 Jun 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://jeasonstudio.github.io/posts/git-commit-message-rebase/</guid>
+      <guid>https://jeasonstudio.coding.me/posts/git-commit-message-rebase/</guid>
       <description>&lt;p&gt;关于 WorkFlow 的一些浅薄见解 :)&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
