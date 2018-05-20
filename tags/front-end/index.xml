@@ -6,10 +6,21 @@
     <description>Recent content in Front End on Jeason Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 17 Mar 2018 13:56:58 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 20 May 2018 22:12:01 +0800</lastBuildDate>
     
 	<atom:link href="https://jeasonstudio.github.io/tags/front-end/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>API 设计最佳实践(二) GraphQL</title>
+      <link>https://jeasonstudio.github.io/posts/graphql-best-practice/</link>
+      <pubDate>Sun, 20 May 2018 22:12:01 +0800</pubDate>
+      
+      <guid>https://jeasonstudio.github.io/posts/graphql-best-practice/</guid>
+      <description>&lt;p&gt;设计一个好的 「GraphQL API/Schema」 很有挑战，我们总是想在健壮性和便利性之间找到一个平衡，同时还要考虑 API 将来如何演变。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>API 设计最佳实践(一) Restful</title>
@@ -40,17 +51,6 @@
       
       <guid>https://jeasonstudio.github.io/posts/why-we-ignore-testing/</guid>
       <description>&lt;p&gt;这是我在知乎上一个问题的回答&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>API 设计最佳实践(二) GraphQL</title>
-      <link>https://jeasonstudio.github.io/posts/graphql-best-practice/</link>
-      <pubDate>Sat, 20 May 2017 22:12:01 +0800</pubDate>
-      
-      <guid>https://jeasonstudio.github.io/posts/graphql-best-practice/</guid>
-      <description>&lt;p&gt;设计一个好的 「GraphQL API/Schema」 很有挑战，我们总是想在健壮性和便利性之间找到一个平衡，同时还要考虑 API 将来如何演变。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>

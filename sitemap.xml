@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://jeasonstudio.github.io/posts/graphql-best-practice/</loc>
+    <lastmod>2018-05-20T22:12:01+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://jeasonstudio.github.io/posts/restfulapi-best-practice/</loc>
     <lastmod>2018-03-17T13:56:58+08:00</lastmod>
   </url>
@@ -35,11 +40,6 @@
   <url>
     <loc>https://jeasonstudio.github.io/posts/git-commit-message-rebase/</loc>
     <lastmod>2017-06-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jeasonstudio.github.io/posts/graphql-best-practice/</loc>
-    <lastmod>2017-05-20T22:12:01+08:00</lastmod>
   </url>
   
   <url>
@@ -139,7 +139,7 @@
   
   <url>
     <loc>https://jeasonstudio.github.io/tags/front-end/</loc>
-    <lastmod>2018-03-17T13:56:58+08:00</lastmod>
+    <lastmod>2018-05-20T22:12:01+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -157,19 +157,19 @@
   
   <url>
     <loc>https://jeasonstudio.github.io/</loc>
-    <lastmod>2018-03-17T13:56:58+08:00</lastmod>
+    <lastmod>2018-05-20T22:12:01+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://jeasonstudio.github.io/posts/</loc>
-    <lastmod>2018-03-17T13:56:58+08:00</lastmod>
+    <lastmod>2018-05-20T22:12:01+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://jeasonstudio.github.io/tags/</loc>
-    <lastmod>2018-03-17T13:56:58+08:00</lastmod>
+    <lastmod>2018-05-20T22:12:01+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -181,7 +181,7 @@
   
   <url>
     <loc>https://jeasonstudio.github.io/tags/%E5%8E%9F%E5%88%9B/</loc>
-    <lastmod>2018-03-17T13:56:58+08:00</lastmod>
+    <lastmod>2018-05-20T22:12:01+08:00</lastmod>
     <priority>0</priority>
   </url>
   
