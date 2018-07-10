@@ -3,10 +3,11 @@ node_js:
   - 8.9.0
 
 before_install:
+  - sudo apt-get update
   - sudo apt-get install hugo
 
 script:
-  - rm -rf ./public || exit(0)
+  - rm -rf ./public
   - npm run build
 
 after_script:
