@@ -10,3 +10,5 @@
 * [ ] 优化 `SEO`
 * [ ] 添加打点和 `tracing`
 * [ ] 站内搜索功能 `algolia`
+
+![](./images/flow.png)
