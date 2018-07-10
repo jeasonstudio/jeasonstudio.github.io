@@ -1,5 +1,5 @@
 # Site settings
-baseurl = "https://jeasonstudio.coding.me/"
+baseurl = "/"
 languageCode = "zh-CN"
 title = "Jeason Blog"
 theme = "hugo-theme-cactus-plus"
