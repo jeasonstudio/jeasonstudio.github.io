@@ -19,7 +19,7 @@ script:
 
 after_success:
   - cd ./public
-  - echo "Convert to [https://github.com/jeasonstudio/jeasonstudio.github.io](https://github.com/jeasonstudio/jeasonstudio.github.io) > readme"
+  - echo "Convert to [https://github.com/jeasonstudio/jeasonstudio.github.io](https://github.com/jeasonstudio/jeasonstudio.github.io)" > readme
   - git init
   - git config user.name "jeason"
   - git config user.email "me@jeasonstudio.cn"
