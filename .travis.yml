@@ -1,10 +1,10 @@
 language: python
 
 env:
- global:
-  # Coding Pages
-  - CO_TOKEN: 771c60b4bb3a3fd9e59621bccf45616124d5b997
-  - CO_REF: git.coding.net/JeasonStudio/JeasonStudio.coding.me.git
+  global:
+    # Coding Pages
+    - CO_TOKEN: 771c60b4bb3a3fd9e59621bccf45616124d5b997
+    - CO_REF: git.coding.net/JeasonStudio/JeasonStudio.coding.me.git
 
 install:
   - wget https://github.com/gohugoio/hugo/releases/download/v0.43/hugo_0.43_Linux-64bit.deb
@@ -15,11 +15,11 @@ before_script:
   - rm -rf ./public ./.git || exit 0
 
 script:
-    - hugo
+  - hugo
 
 after_success:
   - cd ./public
-  - echo "Convert to [https://github.com/jeasonstudio/jeasonstudio.github.io](https://github.com/jeasonstudio/jeasonstudio.github.io)" > readme
+  - echo "Convert to https://github.com/jeasonstudio/jeasonstudio.github.io" > readme
   - git init
   - git config user.name "jeason"
   - git config user.email "me@jeasonstudio.cn"
@@ -34,4 +34,3 @@ after_success:
 branches:
   only:
     - master
-
