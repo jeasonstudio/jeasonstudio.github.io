@@ -2,15 +2,21 @@ language: node_js
 node_js:
   - 8.9.0
 
-before_install:
-  - sudo apt-get update
-  - sudo apt-get install hugo
+# before_install:
+#   - sudo apt-get update
+#   - sudo apt-get install hugo
+
+# Install the apt prerequisites
+addons:
+  apt:
+    packages:
+      - python-pygments
+
+install:
+  - rm -rf ./public || exit 0
 
 script:
-  - rm -rf ./public
-  - npm run build
-
-after_script:
+  - ../binaries/hugo
   - cd ./public
   - echo "Convert to [https://github.com/jeasonstudio/jeasonstudio.github.io](https://github.com/jeasonstudio/jeasonstudio.github.io) > readme"
   - git init
