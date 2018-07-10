@@ -1,8 +1,13 @@
+language: node_js
+node_js:
+  - 8.9.0
+
 before_install:
   - sudo apt-get install hugo
-addons:
-  apt:
-    update: true
+
+script:
+  - rm -rf ./public || exit(0)
+  - npm run build
 
 after_script:
   - cd ./public
