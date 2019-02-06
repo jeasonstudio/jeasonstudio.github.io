@@ -2,6 +2,9 @@
   <h1>
     <a href="https://jeaosnstudio.coding.me">JEASON'S BLOG </a>🎃
   </h1>
+  <img alt="travis" src="https://img.shields.io/travis/jeasonstudio/jeasonstudio.github.io.svg?style=flat">
+  <img alt="lang" src="https://img.shields.io/github/languages/top/jeasonstudio/jeasonstudio.github.io.svg?style=flat">
+  <img alt="issues" src="https://img.shields.io/github/issues/jeasonstudio/jeasonstudio.github.io.svg?style=flat">
 </div>
 
 ## Todos
