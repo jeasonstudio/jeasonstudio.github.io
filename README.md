@@ -1,6 +1,6 @@
 <div align="center">
   <h1>
-    <a href="https://jeaosnstudio.coding.me">JEASON'S BLOG </a>🎃
+    <a href="https://jeasonstudio.coding.me">JEASON'S BLOG </a>🎃
   </h1>
   <img alt="travis" src="https://img.shields.io/travis/jeasonstudio/jeasonstudio.github.io.svg?style=flat">
   <img alt="lang" src="https://img.shields.io/github/languages/top/jeasonstudio/jeasonstudio.github.io.svg?style=flat">
@@ -25,3 +25,4 @@
 * [ ] 考虑是否更换站内统计工具：[不蒜子](https://busuanzi.ibruce.info/) 改为百度统计
 * [ ] 接入域名
 * [ ] CI/CD 接入 [GitHub Workflow](https://developer.github.com/actions/creating-workflows/creating-a-new-workflow/)，目前使用 [travis-ci](https://travis-ci.org/jeasonstudio/jeasonstudio.github.io)
+* [ ] 接入广告系统
