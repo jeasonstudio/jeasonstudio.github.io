@@ -4,6 +4,9 @@ workflow "Build and Deploy to Coding.me" {
 }
 
 action "Hello World" {
-  uses = "docker://node:10"
-  runs = ["node", "-v", "&&", "uname", "-a"]
+  uses = "./action-deploy"
+  env = {
+    MY_NAME = "Jeason"
+  }
+  args = "\"Hello world, I'm $MY_NAME!\""
 }
