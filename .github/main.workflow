@@ -1,9 +1,9 @@
-workflow "New workflow Test" {
+workflow "Build and Deploy to Coding.me" {
   on = "push"
-  resolves = ["Hello World"]
+  resolves = "Hello World"
 }
 
 action "Hello World" {
   uses = "node:10"
-  runs = "node -v && echo hello world"
+  runs = ["sh", "-c", "echo $GITHUB_SHA"] 
 }
